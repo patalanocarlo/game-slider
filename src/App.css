@@ -1,0 +1,8 @@
+.background {
+  background-image: url("./Images/summer2024_tile_bg.png");
+  min-height: 100vh;
+  min-width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
