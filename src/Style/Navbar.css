@@ -1,13 +1,16 @@
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(51, 51, 51, 0.6);
+}
+
 .navbar {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px 10px;
-  background-color: #111;
-
-  top: 0;
-  left: 0;
-  z-index: 1000;
+  background: rgba(51, 51, 51, 0.6);
+  padding: 0 2rem;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .navbar-logo .logo {
@@ -28,6 +31,8 @@
 
 .navbar-auth {
   color: white;
+  display: flex;
+  align-items: center;
 }
 
 .auth-link {
@@ -48,6 +53,7 @@
   cursor: pointer;
   font-size: 1rem;
   border-radius: 4px;
+  margin-left: 1rem;
 }
 
 .preorder-button:hover {

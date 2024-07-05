@@ -1,17 +1,15 @@
 import React from 'react';
 import '../Style/Navbar.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 const Navbar = () => {
   return (
-    <nav className="navbar">
+    <nav className="container navbar-container">
       <div className="navbar-logo">
         <img src="/path/to/logo.png" alt="Logo" className="logo" />
       </div>
       <ul className="navbar-links">
         <li><a href="#games">Giochi</a></li>
-        <li><a href="#news">Novità</a></li>
         <li><a href="#store">Contattaci</a></li>
-        <li><a href="#support">Assistenza</a></li>
       </ul>
       <div className="navbar-auth">
         <a href="#login" className="auth-link">Accedi</a> | 
