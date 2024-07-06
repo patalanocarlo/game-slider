@@ -1,9 +1,8 @@
 .card {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   height: 100%;
-  background-color: #1b1b1b;
-  color: #fff;
+  background-color: #292b2c;
+  color: #ddd;
   border: none;
   border-radius: 8px;
   overflow: hidden;
@@ -17,15 +16,25 @@
 }
 
 .card-img-top {
-  height: 180px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
 .card-body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding: 16px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .card-body {
+  opacity: 1;
+  overflow: visible;
 }
 
 .card-title {
@@ -54,24 +63,25 @@
   padding: 8px 12px;
   color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, opacity 0.3s ease-in-out;
+  opacity: 0;
 }
 
-.add-to-cart-btn:hover {
-  background-color: #0056b3;
+.card:hover .add-to-cart-btn {
+  opacity: 1;
 }
 
 .card-placeholder {
   border-radius: 8px;
   overflow: hidden;
-  background-color: #2a2a2a;
+  background-color: #343a40;
   height: 100%;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .placeholder-img {
-  height: 180px;
-  background-color: #444;
+  height: 100%;
+  background-color: #495057;
 }
 
 .placeholder-body {
@@ -80,7 +90,7 @@
 
 .placeholder-title,
 .placeholder-text {
-  background-color: #555;
+  background-color: #6c757d;
 }
 
 .placeholder-title {

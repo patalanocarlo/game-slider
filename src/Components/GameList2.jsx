@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import '../Style/GameList.css';
+import '../Style/AnotherGameList.css';
 
 const GameList = ({ apiKey, genre, year }) => {
   const [games, setGames] = useState([]);
@@ -62,7 +62,7 @@ const GameList = ({ apiKey, genre, year }) => {
     <Container className="my-4">
       <Row className="justify-content-center">
         <Col>
-          <h1 className="text-center mb-4">Titoli Del momento</h1>
+          <h1 className="text-center mb-4">Best Shooter</h1>
         </Col>
       </Row>
       <Row>
