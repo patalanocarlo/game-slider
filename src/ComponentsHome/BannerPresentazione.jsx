@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Style/BannerPresentazione.css';
+import '../StyleHome/BannerPresentazione.css';
 import Image from '../Images/Mini Images.jpg'
 import Image2 from '../Images/nierautomata-game-of-the-yorha-edition-game-of-the-yorha-edition-pc-gioco-steam-cover.jpg'
 import Image3 from '../Images/nierAutomata update.png'

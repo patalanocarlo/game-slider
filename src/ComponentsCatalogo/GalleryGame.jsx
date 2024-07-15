@@ -6,7 +6,7 @@ import '../StyleCatalogo/GalleryGame.css';
 const HorizontalScrollGallery = () => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, ] = useState(1);
+  const [page] = useState(1);
   const galleryRef = useRef(null);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const HorizontalScrollGallery = () => {
   };
 
   const renderLoadingPlaceholder = () => {
-    const placeholders = Array.from({ length: 1 }); 
+    const placeholders = Array.from({ length: 1 });
     return placeholders.map((_, index) => (
       <div key={index} className="gallery-item">
         <div className="card-placeholder">
@@ -61,7 +61,12 @@ const HorizontalScrollGallery = () => {
           ) : (
             games.map((game) => (
               <div className="gallery-item" key={game.id}>
-                <img src={game.background_image} alt={game.name} className="img-fluid" />
+                <div className="card">
+                  <img src={game.background_image} alt={game.name} className="img-fluid" />
+                  <div className="card-body">
+                    <h5 className="card-title">{game.name}</h5>
+                  </div>
+                </div>
               </div>
             ))
           )}

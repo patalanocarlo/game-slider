@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../Style/AnimatedGif.css';
+import '../StyleHome/AnimatedGif.css';
 import caroselloImg from '../Images/Omori.png'; 
 import caroselloImg2 from '../Images/call-of-duty-black-ops-6-hd-wallpaper-uhdpaper.com-814@0@j.jpg'; 
 import caroselloImg3 from '../Images/cropped-1920-1080-1332401.jpeg'; 
