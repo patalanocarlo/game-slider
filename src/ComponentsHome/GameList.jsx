@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import '../Style/GameList.css';
+import '../StyleHome/GameList.css';
 
 const GameList = ({ apiKey, genre, year }) => {
   const [games, setGames] = useState([]);

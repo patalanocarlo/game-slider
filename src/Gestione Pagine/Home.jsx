@@ -1,10 +1,10 @@
 import React from 'react';
-import AnimatedGif from '../Components/AnimatedGif ';
-import GameList from '../Components/GameList';
-import GameList2 from '../Components/GameList2';
-import BannerAnnuncio from '../Components/BannerAnnuncio';
-import BannerPresentazione from '../Components/BannerPresentazione';
-import Footer from '../Components/FooterHomepage';
+import AnimatedGif from '../ComponentsHome/AnimatedGif ';
+import GameList from '../ComponentsHome/GameList';
+import GameList2 from '../ComponentsHome/GameList2';
+import BannerAnnuncio from '../ComponentsHome/BannerAnnuncio';
+import BannerPresentazione from '../ComponentsHome/BannerPresentazione';
+import Footer from '../ComponentsHome/FooterHomepage';
 
 function Home({ apiKey }) {
   return (

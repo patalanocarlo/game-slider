@@ -1,5 +1,6 @@
+// src/ComponentsHome/MyNavbar.js
 import React, { useState } from 'react';
-import '../Style/Navbar.css';
+import '../StyleHome/Navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -17,7 +18,7 @@ const CustomNavbar = () => {
   return (
     <div className='custom-navbar'>
       <Navbar expand="lg" variant="dark" className="container">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand as={Link} to="/">
           <img src="imagee" alt="Deco Logo" className="navbar-logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={handleToggleCollapse} />
@@ -27,7 +28,7 @@ const CustomNavbar = () => {
             <Nav.Link href="#link">Chi Siamo</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">Catalogo e Offerte Videogiochi</Nav.Link>
+            <Nav.Link as={Link} to="/Catalogo">Catalogo e Offerte Videogiochi</Nav.Link>
             <Nav.Link href="#deets">Contattaci</Nav.Link>
             <Nav.Link as={Link} to="/cart">
               <FontAwesomeIcon icon={faShoppingCart} />

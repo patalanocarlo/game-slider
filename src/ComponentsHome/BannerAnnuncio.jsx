@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPercent, faGift, faCreditCard } from '@fortawesome/free-solid-svg-icons';
-import '../Style/BannerAnnuncio.css';
+import '../StyleHome/BannerAnnuncio.css';
 import backgroundImage from '../Images/cover-1920-bd460362.jpg';
-
+import { Link } from 'react-router-dom';
 const PromoBanner = () => {
   const bannerRef = useRef(null);
   const scrollStarted = useRef(false);
@@ -64,7 +64,7 @@ const PromoBanner = () => {
           <p>Pagamenti Online</p>
         </div>
       </div>
-      <button>Accedi al Catalogo</button>
+      <Link to="/Catalogo" className="promo-button">Accedi al Catalogo</Link>
     </div>
   );
 };

@@ -41,15 +41,17 @@
   margin-bottom: 10px;
 }
 
-button {
-  background-color: red;
-  color: white;
-  border: none;
+.promo-button {
+  display: inline-block;
   padding: 10px 20px;
-  font-size: 1em;
-  cursor: pointer;
+  margin-top: 20px;
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
 }
 
-button:hover {
-  background-color: darkred;
+.promo-button:hover {
+  background-color: #0056b3;
 }
