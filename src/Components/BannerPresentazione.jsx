@@ -1,11 +1,16 @@
 import React from 'react';
 import '../Style/BannerPresentazione.css';
 import Image from '../Images/Mini Images.jpg'
-
-const CallOfDutyLayout = () => {
+import Image2 from '../Images/nierautomata-game-of-the-yorha-edition-game-of-the-yorha-edition-pc-gioco-steam-cover.jpg'
+import Image3 from '../Images/nierAutomata update.png'
+import Image4 from '../Images/the-last-of-us-2-edizioni-da-collezione-gamesoul.jpg'
+import Image5 from '../Images/the-last-of-us-part-2-ii-29525.webp'
+import Image6 from '../Images/Halo game bunner.webp'
+const BannerPresentazione = () => {
   return (
-    <div className="container-fluid my-4 ">
+    <div className="container my-4 ">
       <div className="row">
+        <h1>Ti presentiamo:</h1>
         <div className="col-md-8">
           <div className="card bg-dark text-white fixed-size">
             <img src={Image} className="card-img" alt="BlackCell" />
@@ -14,41 +19,41 @@ const CallOfDutyLayout = () => {
           <div className="row mt-4 flex-column">
             <div className="col-12 mb-4">
               <div className="card bg-dark text-white fixed-size-small">
-                <img src="{BlackCellImage} "className="card-img" alt="Gioca e Trasformati" />
+                <img src={Image2} className="card-img" alt="Gioca e Trasformati" />
                 <div className="card-img-overlay"></div>
               </div>
             </div>
             <div className="col-12">
               <div className="card bg-dark text-white fixed-size-small">
-                <img src="{BlackCellImage} " className="card-img" alt="Ferma la Minaccia" />
+                <img src={Image4}  className="card-img" alt="Ferma la Minaccia" />
                 <div className="card-img-overlay"></div>
               </div>
             </div>
            
           </div>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 sm-6">
           <div className="news-section">
-            <h2>NOVITÀ</h2>
+            <h2>Novità Dei Titoli:</h2>
             <div className="news-item large-item">
               <img src={Image} alt="Patch Notes" />
-              <p>Stagione 4 di Call of Duty: Modern Warfare III - Note sulla patch</p>
+              <p>Stagione 4 di Call of Duty: Modern Warfare III - Note sulla patch.</p>
               <small>13 giorni fa</small>
             </div>
             <div className="news-item large-item">
-              <img src={Image}alt="Patch Notes" />
-              <p>Note sulla patch della Stagione 4 di Warzone</p>
-              <small>13 giorni fa</small>
+              <img src={Image3}alt="Patch Notes" />
+              <p>VideoGame e Anime il CrossOver che funziona!</p>
+              <small>2 giorni fa</small>
             </div>
             <div className="news-item large-item">
-              <img src={Image}alt="Patch Notes" />
-              <p>Nuovi contenuti per MWIII: Stagione 4 Furiosa</p>
-              <small>15 giorni fa</small>
+              <img src={Image5}alt="Patch Notes" />
+              <p>Un Mondo ormai in Epidemia,ma con ancora una speranza.</p>
+              <small>12 Ore fa</small>
             </div>
             <div className="news-item large-item">
-              <img src={Image} alt="Patch Notes" />
-              <p>Multiplayer Map Guide — Incline</p>
-              <small>15 giorni fa</small>
+              <img src={Image6} alt="Patch Notes" />
+              <p>L'ultimo Capitolo Di una Leggenda.</p>
+              <small>1 mese fa</small>
             </div>
             
           </div>
@@ -58,4 +63,4 @@ const CallOfDutyLayout = () => {
   );
 };
 
-export default CallOfDutyLayout;
+export default BannerPresentazione;

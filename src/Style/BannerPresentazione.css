@@ -1,9 +1,5 @@
 .container {
-  max-width: 1200px;
-}
-
-.sfondo {
-  background-color: #1a1a1a;
+  max-width: 1150px;
 }
 
 .fixed-size {
@@ -59,12 +55,4 @@
 
 .news-item small {
   color: #bbb;
-}
-
-.large-item img {
-  height: 150px;
-}
-
-.small-item img {
-  height: 100px;
 }
