@@ -48,7 +48,7 @@ const CustomCards = () => {
   return (
     <Container className="mt-5">
       <Row className="justify-content-center">
-        <h2 className='text-center mt-5'>Offerte Vantaggiose Su Grandi Titolo</h2>
+        <h2 className='text-center mt-5'>Offerte Vantaggiose Su Grandi Titoli</h2>
         {loading ? (
           renderLoadingPlaceholder()
         ) : (

@@ -1,0 +1,14 @@
+.list-group-item.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.card {
+  border: none;
+}
+h4 {
+  color: white;
+}
+.position {
+  justify-content: center;
+}
