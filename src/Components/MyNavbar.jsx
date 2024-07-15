@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import '../Style/Navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const CustomNavbar = () => {  
-
   const [showCollapse, setShowCollapse] = useState(false);
+  const [cartCount, ] = useState(0); 
 
   const handleToggleCollapse = () => {
     setShowCollapse(!showCollapse);
@@ -20,22 +23,18 @@ const CustomNavbar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={handleToggleCollapse} />
         <Navbar.Collapse id="responsive-navbar-nav" className={showCollapse ? 'show' : ''}>
           <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link href="#link">Chi Siamo</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link href="#deets">Catalogo e Offerte Videogiochi</Nav.Link>
             <Nav.Link href="#deets">Contattaci</Nav.Link>
-            
+            <Nav.Link as={Link} to="/cart">
+              <FontAwesomeIcon icon={faShoppingCart} />
+              <span className="cart-count ">{cartCount}</span>
+            </Nav.Link>
           </Nav>
-          <Form inline className="mr-2">
-            <FormControl type="text" placeholder="Digita qui..." className="mr-sm-2" />
-          </Form>
-          <div className="d-flex align-items-center">
-            <Button variant="outline-light">Cerca un Prodotto</Button>
-          </div>
         </Navbar.Collapse>
-     
       </Navbar>
     </div>
   );

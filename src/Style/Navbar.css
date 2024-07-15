@@ -31,3 +31,10 @@
 .gif-container {
   position: relative;
 }
+.custom-navbar .cart-count {
+  margin-left: 5px;
+  color: white;
+  padding: 6px 10px;
+  font-size: 15px;
+  vertical-align: top;
+}
