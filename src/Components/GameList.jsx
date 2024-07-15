@@ -62,7 +62,7 @@ const GameList = ({ apiKey, genre, year }) => {
     <Container className="my-4">
       <Row className="justify-content-center">
         <Col>
-          <h1 className="text-center mb-4">Titoli Del momento</h1>
+          <h1 className="text-center mb-4">Titoli Del Momento</h1>
         </Col>
       </Row>
       <Row>

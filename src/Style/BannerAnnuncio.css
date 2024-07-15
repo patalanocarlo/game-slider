@@ -1,0 +1,55 @@
+.promo-banner {
+  position: relative;
+  min-height: 540px;
+  min-width: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: #1d333e;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-repeat: no-repeat;
+}
+
+.promo-banner h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.promo-items {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.promo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.promo-item .icon {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: darkred;
+}

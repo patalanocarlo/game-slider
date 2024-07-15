@@ -1,58 +1,38 @@
-import React, { useRef, useState } from 'react';
-import gifAnimated from '../Images/videos/giphy (1).gif';
+import React, { useState } from 'react';
 import '../Style/AnimatedGif.css';
+import caroselloImg from '../Images/Omori.png'; 
+import caroselloImg2 from '../Images/call-of-duty-black-ops-6-hd-wallpaper-uhdpaper.com-814@0@j.jpg'; 
+import caroselloImg3 from '../Images/cropped-1920-1080-1332401.jpeg'; 
+import caroselloImg4 from '../Images/forza.jpeg'; 
+import caroselloImg5 from '../Images/helld.jpeg'; 
 
-const AnimatedGif = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const gifRef = useRef(null);
-  const canvasRef = useRef(null);
+const Carousel = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const images = [caroselloImg, caroselloImg2, caroselloImg3, caroselloImg4, caroselloImg5];
 
-  const togglePlay = () => {
-    if (isPlaying) {
-      stopGif();
-    } else {
-      startGif();
-    }
-    setIsPlaying(!isPlaying);
-  };
+    const nextSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
 
-  const stopGif = () => {
-    const gif = gifRef.current;
-    const canvas = canvasRef.current;
-    if (gif && canvas) {
-      const ctx = canvas.getContext('2d');
-      canvas.width = gif.width;
-      canvas.height = gif.height;
-      ctx.drawImage(gif, 0, 0, gif.width, gif.height);
-      gif.style.display = 'none';
-      canvas.style.display = 'block';
-    }
-  };
+    const prevSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    };
 
-  const startGif = () => {
-    const gif = gifRef.current;
-    const canvas = canvasRef.current;
-    if (gif && canvas) {
-      gif.style.display = 'block';
-      canvas.style.display = 'none';
-    }
-  };
-
-  return (
-    <div className="gif-container">
-      <img
-        src={gifAnimated}
-        alt="Animated GIF"
-        className="animated-gif"
-        ref={gifRef}
-        style={{ display: isPlaying ? 'block' : 'none' }}
-      />
-      <canvas ref={canvasRef} style={{ display: isPlaying ? 'none' : 'block' }}></canvas>
-      <button onClick={togglePlay} className="play-stop-btn">
-        {isPlaying ? 'Stop' : 'Play'}
-      </button>
-    </div>
-  );
+    return (
+        <div className="carousel">
+            <button onClick={prevSlide} className="carousel-button prev">‹</button>
+            <div className="carousel-images" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+                {images.map((image, index) => (
+                    <img
+                        key={index}
+                        src={image}
+                        alt={`Slide ${index}`}
+                    />
+                ))}
+            </div>
+            <button onClick={nextSlide} className="carousel-button next">›</button>
+        </div>
+    );
 };
 
-export default AnimatedGif;
+export default Carousel;
