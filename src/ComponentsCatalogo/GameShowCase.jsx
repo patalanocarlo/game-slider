@@ -77,7 +77,7 @@ const GameShowcase = () => {
     },
     {
       title: 'GIOCHI CON L\'ETICHETTA "GIOCHI DI CORSA"',
-      description: 'Dato il tempo che hai trascorso di recente in giochi con l\'etichetta "Giochi di Corsa"',
+      description: 'Dato il tempo che hai trascorso di recente in giochi con l\'etichetta "Simulatori Di Corsa"',
       games: [
         {
           title: 'Forza Horizon 4',

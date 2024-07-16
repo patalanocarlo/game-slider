@@ -1,4 +1,4 @@
-// src/ComponentsHome/MyNavbar.js
+
 import React, { useState } from 'react';
 import '../StyleHome/Navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,11 +25,11 @@ const CustomNavbar = () => {
         <Navbar.Collapse id="responsive-navbar-nav" className={showCollapse ? 'show' : ''}>
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link href="#link">Chi Siamo</Nav.Link>
+            <Nav.Link as={Link} to="/Chi Siamo">Chi Siamo</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link as={Link} to="/Catalogo">Catalogo e Offerte Videogiochi</Nav.Link>
-            <Nav.Link href="#deets">Contattaci</Nav.Link>
+            <Nav.Link as={Link} to="/Contattaci">Contattaci</Nav.Link>
             <Nav.Link as={Link} to="/cart">
               <FontAwesomeIcon icon={faShoppingCart} />
               <span className="cart-count ">{cartCount}</span>

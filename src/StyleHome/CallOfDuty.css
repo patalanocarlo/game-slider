@@ -1,0 +1,29 @@
+:root {
+  --color-dark: #272727;
+}
+
+body,
+.page-container {
+  background-color: var(--color-dark);
+  color: white;
+}
+
+.product-details {
+  font-size: 0.9rem;
+}
+
+p {
+  color: #999;
+}
+
+.text-white {
+  color: white !important;
+}
+.zone {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.zone2 {
+  margin-right: 10px;
+  margin-left: 10px;
+}

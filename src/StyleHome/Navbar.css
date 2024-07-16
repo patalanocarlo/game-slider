@@ -3,7 +3,11 @@
   width: 100px;
   height: auto;
 }
-
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 .navbar-nav .nav-link {
   color: white;
   margin-right: 10px;
@@ -21,13 +25,16 @@
 .custom-navbar {
   background-color: #1d333e;
 }
+
 .custom-navbar {
+  margin: 0;
+  padding: 0;
   background-color: #1d333e;
   position: fixed;
   width: 100%;
   z-index: 2;
+  top: 0;
 }
-
 .gif-container {
   position: relative;
 }

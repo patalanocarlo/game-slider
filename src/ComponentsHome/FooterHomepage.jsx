@@ -3,7 +3,7 @@ import '../StyleHome/FooterHome.css';
 
 const Footer = () => {
     return (
-      <footer className="footer bg-dark text-white pt-4">
+      <footer className="footer position bg-dark text-white pt-4">
         <div className="container">
           <div className="row">
             <div className="col-12 text-center mb-4 footer-links">
