@@ -103,7 +103,11 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
-      <div>      <img src={gifImage} alt="GIF animata" /></div>
+      <div className="position">
+            <div className='Border'>
+                <img src={gifImage} alt="GIF animata" />
+            </div>
+        </div>
       <div className="row mt-5">
     <div className="col-12">
         <h2>Ultime notizie sul gioco</h2>

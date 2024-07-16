@@ -27,3 +27,10 @@ p {
   margin-right: 10px;
   margin-left: 10px;
 }
+.Border {
+  border-radius: 10px;
+}
+.position {
+  display: flex;
+  justify-content: center;
+}
