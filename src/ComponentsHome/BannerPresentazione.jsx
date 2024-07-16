@@ -43,22 +43,30 @@ const BannerPresentazione = () => {
           <div className="news-section">
             <h2>Novità Dei Titoli:</h2>
             <div className="news-item large-item">
+              <Link to="/game/blackcell">
               <img src={Image} alt="Patch Notes" />
+              </Link>
               <p>Stagione 4 di Call of Duty: Modern Warfare III - Note sulla patch.</p>
               <small>13 giorni fa</small>
             </div>
             <div className="news-item large-item">
-              <img src={Image3} alt="Patch Notes" />
+              <Link to="/game/nier-automata">
+             <img src={Image3} alt="Patch Notes" />
+              </Link>
               <p>VideoGame e Anime il CrossOver che funziona!</p>
               <small>2 giorni fa</small>
             </div>
             <div className="news-item large-item">
-              <img src={Image5} alt="Patch Notes" />
+             <Link to="/game/last-of-us-3">
+             <img src={Image5} alt="Patch Notes" />
+             </Link>
               <p>Un Mondo ormai in Epidemia, ma con ancora una speranza.</p>
               <small>12 Ore fa</small>
             </div>
             <div className="news-item large-item">
-              <img src={Image6} alt="Patch Notes" />
+            <Link to="/game/HaloPrew">
+            <img src={Image6} alt="Patch Notes" />
+            </Link>
               <p>L'ultimo Capitolo Di una Leggenda.</p>
               <small>1 mese fa</small>
             </div>

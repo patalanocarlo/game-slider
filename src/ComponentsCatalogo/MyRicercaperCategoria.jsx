@@ -107,7 +107,7 @@ const GameCatalog = () => {
               ))}
             </div>
             {totalPages > 1 && (
-              <div className="pagination position">
+              <div className="pagination ">
                 {Array.from({ length: totalPages }, (_, index) => (
                   <button
                     key={index + 1}

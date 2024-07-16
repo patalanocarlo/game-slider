@@ -19,18 +19,29 @@ p {
 .text-white {
   color: white !important;
 }
+
 .zone {
   margin-right: 20px;
   margin-left: 20px;
 }
+
 .zone2 {
   margin-right: 10px;
   margin-left: 10px;
 }
+
 .Border {
   border-radius: 10px;
 }
+
 .position {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gif-container {
+  display: flex;
   justify-content: center;
+  align-items: center;
 }

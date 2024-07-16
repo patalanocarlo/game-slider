@@ -9,7 +9,7 @@ import Footer from './ComponentsHome/FooterHomepage';
 import Catalogo from './Gestione Pagine/Catalogo';
 import BlackCellPage from './ComponentsHome/BlackCellPage';
 import NierAutomataPage from './ComponentsHome/NierAutomataPage';
-import LastOfUs2Page from './ComponentsHome/LastOfUs2Page';
+import LastOfUs2Page from './ComponentsHome/TheLastOfUs2';
 function App() {
   const apiKey = 'f511273fe9734983b1d420685c9477f5';
   
@@ -22,6 +22,7 @@ function App() {
         <Route path="/game/blackcell" element={<BlackCellPage />} />
         <Route path="/game/nier-automata" element={<NierAutomataPage />} />
         <Route path="/game/last-of-us-2" element={<LastOfUs2Page />} />
+        <Route path="/game/last-of-us-3" element={<LastOfUs2Page />} />
       </Routes>
       <Footer />
     </BrowserRouter>
