@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, {useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../StyleHome/Nier.css'; 
 import Image from '../Images/call-of-duty-modernSHOP.jpg';
@@ -10,8 +11,26 @@ import VideoImage5 from '../Images/call paracadute.jpg';
 import NewsImage1 from '../Images/cod ghost.jpg';
 import NewsImage2 from '../Images/call Movement.jpg';
 import NewsImage3 from '../Images/fallout cod.jpg';
+import { CartContext } from '../ComponentsHome/CartContext';
+
+
+
 
 const ProductPage = () => {
+  const { addToCart, isItemAdded } = useContext(CartContext); 
+  const handleAddToCart = () => {
+  
+    const game = {
+      id: 4, 
+      name: 'Call of Duty: Modern Warfare III',
+      price: '59.99',
+      background_image: Image,
+      released: '10 novembre 2023',
+      rating: '9.0', 
+    };
+    addToCart(game);
+  };
+
   return (
     <div className="container my-5">
       <div className="row">
@@ -49,7 +68,13 @@ const ProductPage = () => {
           <div className="mb-3">
             <h2 className="text-danger"><del>80€</del> 59.99€ <span className="text-success">-25%</span></h2>
           </div>
-          <button className="btn btn-warning w-100 mb-3">Aggiungi al carrello</button>
+          <button 
+            className={`btn ${isItemAdded(4) ? 'btn-danger' : 'btn-warning'} w-100 mb-3`} 
+            onClick={handleAddToCart} 
+            disabled={isItemAdded(4)} 
+          >
+            {isItemAdded(4) ? 'Aggiunto al carrello' : 'Aggiungi al carrello'}
+          </button>
           <div className="product-details">
             <h2>Informazioni prodotto</h2>
             <ul className="list-unstyled">

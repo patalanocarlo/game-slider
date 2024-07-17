@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../StyleHome/CallOfDuty.css'; 
 import Image from '../Images/the last cover 2.jpg';
@@ -7,19 +7,31 @@ import VideoImage2 from '../Images/the last second image.jpg';
 import VideoImage3 from '../Images/the last terza image.jpg';
 import VideoImage4 from '../Images/the last quarta image.jpg';
 import VideoImage5 from '../Images/the last sesta image.jpg';
-
+import { CartContext } from '../ComponentsHome/CartContext';
 import NewsImage4 from '../Images/t1.jpg';
 import NewsImage5 from '../Images/t2.jpg';
 import NewsImage6 from '../Images/t3.jpg';
 import gifImage from '../Images/videos/the-last-of-us2-clicker.gif';
 
 const ProductPage = () => {
+  const { addToCart, isItemAdded } = useContext(CartContext); 
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
 
   const toggleDescriptionVisibility = () => {
     setIsDescriptionVisible(!isDescriptionVisible);
   };
 
+  const handleAddToCart = () => {
+    const game = {
+      id: 3, 
+      name: 'The Last Of Us Part II',
+      price: '59.99',
+      background_image: Image,
+      released: '19 giugno 2020',
+      rating: '9.0', 
+    };
+    addToCart(game);
+  };
   return (
     <div className="container my-5">
       <div className="row">
@@ -55,7 +67,13 @@ const ProductPage = () => {
           <div className="mb-3">
             <h2 className="text-danger"><del>69,99€</del> 59.99€ <span className="text-success">-10%</span></h2>
           </div>
-          <button className="btn btn-warning w-100 mb-3">Aggiungi al carrello</button>
+          <button 
+            className={`btn ${isItemAdded(1) ? 'btn-danger' : 'btn-warning'} w-100 mb-3`} 
+            onClick={handleAddToCart} 
+            disabled={isItemAdded(3)} 
+          >
+            {isItemAdded(3) ? 'Aggiunto al carrello' : 'Aggiungi al carrello'}
+          </button>
           <div className="product-details">
             <h2>Informazioni prodotto</h2>
             <ul className="list-unstyled">

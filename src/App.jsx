@@ -11,7 +11,7 @@ import NierAutomataPage from './ComponentsHome/NierAutomataPage';
 import LastOfUs2Page from './ComponentsHome/TheLastOfUs2';
 import { CartProvider } from './ComponentsHome/CartContext';
 import Cart from './ComponentsHome/Cart';
-
+import HaloInfinite from './ComponentsHome/HaloInfinite';
 function App() {
   const apiKey = 'f511273fe9734983b1d420685c9477f5';
   
@@ -25,6 +25,7 @@ function App() {
           <Route path="/game/blackcell" element={<BlackCellPage />} />
           <Route path="/game/nier-automata" element={<NierAutomataPage />} />
           <Route path="/game/last-of-us-2" element={<LastOfUs2Page />} />
+          <Route path="/game/HaloPrew" element={<HaloInfinite />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
         <Footer />

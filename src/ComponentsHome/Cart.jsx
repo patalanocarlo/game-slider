@@ -4,7 +4,7 @@ import { CartContext } from '../ComponentsHome/CartContext';
 import '../StyleHome/Cart.css'; 
 
 const Cart = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, removeFromCart } = useContext(CartContext);
 
   const getTotalPrice = () => {
     return cart.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2);
@@ -19,13 +19,21 @@ const Cart = () => {
             <div key={index} className="cart-item mb-4">
               <Row>
                 <Col xs={5} sm={4} md={3}> 
-                  <Image className="cart-item-image" src={item.background_image} fluid rounded /> {/* Added class */}
+                  <Image className="cart-item-image" src={item.background_image} fluid rounded /> 
                 </Col>
                 <Col xs={7} sm={8} md={9}>
                   <h4>{item.name}</h4>
                   <p>Prezzo: {item.price} €</p>
                   <p>Rating: {item.rating}</p>
                   <p>Data di uscita: {new Date(item.released).toLocaleDateString('it-IT')}</p>
+                  {/* Remove button */}
+                  <Button 
+                    variant="danger" 
+                    onClick={() => removeFromCart(item.id)} 
+                    style={{ float: 'right', marginLeft: '10px' }}
+                  >
+                    X
+                  </Button>
                 </Col>
               </Row>
             </div>

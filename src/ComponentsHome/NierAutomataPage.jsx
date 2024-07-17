@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../StyleHome/CallOfDuty.css'; 
 import Image from '../Images/Nier Image.jpg';
@@ -12,23 +12,37 @@ import NewsImage4 from '../Images/nier prima image.jpg';
 import NewsImage5 from '../Images/Nier seconda image.jpg';
 import NewsImage6 from '../Images/Nier terza image.jpg';
 import gifImage from '../Images/videos/punch_by_nocturnbros_dbgr5fq.gif';
+import { CartContext } from '../ComponentsHome/CartContext';
 
 const ProductPage = () => {
+  const { addToCart, isItemAdded } = useContext(CartContext); 
   const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
 
   const toggleDescriptionVisibility = () => {
     setIsDescriptionVisible(!isDescriptionVisible);
   };
 
+  const handleAddToCart = () => {
+    const game = {
+      id: 2, 
+      name: 'NieR: Automata',
+      price: '29.99',
+      background_image: Image,
+      released: '2017-03-17',
+      rating: '9.0', 
+    };
+    addToCart(game);
+  };
+
   return (
     <div className="container my-5">
       <div className="row">
         <div className="col-md-6 text-center mt-5">
-          <img src={Image} alt="Elden Ring Shadow of the Erdtree Edition" className="img-fluid" />
+          <img src={Image} alt="NieR: Automata" className="img-fluid" />
           <div className="mt-4">
             <h2>Riguardo al prodotto</h2>
             <p>
-            NieR: Automata narra la storia degli androidi 2B, 9S e A2 e della loro accanita battaglia per la riconquista di un mondo distopico governato dalle macchine e ora invaso da potenti biomacchine. Delle biomacchine hanno invaso la Terra, obbligando l'umanità ad abbandonarla. In un ultimo sforzo per riprendersi il pianeta e annientare gli invasori, gli umani organizzano una resistenza formata da androidi-soldato. Ora sul pianeta infuria una guerra tra macchine e androidi...
+              NieR: Automata narra la storia degli androidi 2B, 9S e A2 e della loro accanita battaglia per la riconquista di un mondo distopico governato dalle macchine e ora invaso da potenti biomacchine. Delle biomacchine hanno invaso la Terra, obbligando l'umanità ad abbandonarla. In un ultimo sforzo per riprendersi il pianeta e annientare gli invasori, gli umani organizzano una resistenza formata da androidi-soldato. Ora sul pianeta infuria una guerra tra macchine e androidi...
             </p>
             <div className="tags mt-3">
               <span className="badge bg-secondary zone2">STORIA BEN CURATA</span>
@@ -55,7 +69,13 @@ const ProductPage = () => {
           <div className="mb-3">
             <h2 className="text-danger"><del>60€</del> 29.99€ <span className="text-success">-50%</span></h2>
           </div>
-          <button className="btn btn-warning w-100 mb-3">Aggiungi al carrello</button>
+          <button 
+            className={`btn ${isItemAdded(1) ? 'btn-danger' : 'btn-warning'} w-100 mb-3`} 
+            onClick={handleAddToCart} 
+            disabled={isItemAdded(2)} 
+          >
+            {isItemAdded(2) ? 'Aggiunto al carrello' : 'Aggiungi al carrello'}
+          </button>
           <div className="product-details">
             <h2>Informazioni prodotto</h2>
             <ul className="list-unstyled">
@@ -122,7 +142,7 @@ const ProductPage = () => {
             </div>
             <p>NieR: Automata narra la storia degli androidi 2B, 9S e A2 e della loro accanita battaglia per la riconquista di un mondo distopico governato dalle macchine e ora invaso da potenti biomacchine.</p>
             <p>Delle biomacchine hanno invaso la Terra, obbligando l'umanità ad abbandonarla. In un ultimo sforzo per riprendersi il pianeta e annientare gli invasori, gli umani organizzano una resistenza formata da androidi-soldato. Ora sul pianeta infuria una guerra tra macchine e androidi... una guerra che presto porterà a galla la verità su questo mondo.</p>
-            <p>*Per accedere a questo contenuto, dovrai aver progredito in un certo modo nella storia principale del gioco. Questo contenuto non sarà disponibile durante alcune scene dello scenario del gioco principale.Caratteristiche:</p>
+            <p>*Per accedere a questo contenuto, dovrai aver progredito in un certo modo nella storia principale del gioco. Questo contenuto non sarà disponibile durante alcune scene dello scenario del gioco principale. Caratteristiche:</p>
             <p>Battaglie piene d’azione – Passa da attacchi in mischia ad attacchi a distanza mentre affronti orde di nemici e feroci boss in svariate mappe aperte. I comandi intuitivi e la fluidità dei combattimenti sono perfetti per i neofiti, ma nascondono anche una certa complessità per i giocatori più esperti. Puoi effettuare offensive estremamente veloci mescolando attacchi leggeri e pesanti e provare tutto il tuo arsenale di armi mentre schivi agilmente gli attacchi nemici.</p>
             <p>Un bellissimo e desolato open-world – Il gioco passa fluidamente da panorami mozzafiato a bellissime ambientazioni senza alcun tempo di caricamento. Gli ambienti girano in 60fps e contengono moltissime missioni secondarie che si intrecciano alla storia principale.</p>
             <p>Una storia e dei personaggi estremamente curati – NieR: Automata narra la storia degli androidi 2B, 9S e A2 e della loro accanita battaglia per la riconquista di un mondo distopico governato dalle macchine e ora invaso da potenti biomacchine.</p>
