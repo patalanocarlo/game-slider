@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../StyleCatalogo/MyRicercaperCategoria.css'; 
 
 const GameCatalog = () => {
   const [games, setGames] = useState([]);
@@ -10,14 +10,16 @@ const GameCatalog = () => {
   const [selectedGenre, setSelectedGenre] = useState({ name: 'Tutti i Giochi', id: '' });
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const pageSize = 9; 
+  const pageSize = 9;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGenres = async () => {
       try {
         const response = await fetch('https://api.rawg.io/api/genres?key=f511273fe9734983b1d420685c9477f5');
         const data = await response.json();
-        setGenres([{ name: 'Tutti i Giochi', id: '' }, ...data.results]); 
+        setGenres([{ name: 'Tutti i Giochi', id: '' }, ...data.results]);
       } catch (error) {
         console.error('Error fetching genres:', error);
       }
@@ -31,16 +33,16 @@ const GameCatalog = () => {
       setLoading(true);
       let allGames = [];
       try {
-        if (selectedGenre.id === '') { 
-          for (let page = 1; page <= 3; page++) { 
+        if (selectedGenre.id === '') {
+          for (let page = 1; page <= 3; page++) {
             const response = await fetch(`https://api.rawg.io/api/games?key=f511273fe9734983b1d420685c9477f5&page=${page}&page_size=${pageSize}`);
             const data = await response.json();
-            allGames = [...allGames, ...data.results]; 
+            allGames = [...allGames, ...data.results];
           }
-        } else { 
-          const response = await fetch(`https://api.rawg.io/api/games?key=f511273fe9734983b1d420685c9477f5&genres=${selectedGenre.id}&page_size=${pageSize * 3}`); 
+        } else {
+          const response = await fetch(`https://api.rawg.io/api/games?key=f511273fe9734983b1d420685c9477f5&genres=${selectedGenre.id}&page_size=${pageSize * 3}`);
           const data = await response.json();
-          allGames = data.results; 
+          allGames = data.results;
         }
         setGames(allGames);
         setTotalPages(Math.ceil(allGames.length / pageSize));
@@ -56,14 +58,17 @@ const GameCatalog = () => {
 
   const handleGenreChange = (genre) => {
     setSelectedGenre(genre);
-    setCurrentPage(1); 
+    setCurrentPage(1);
   };
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const displayedGames = games.slice((currentPage - 1) * pageSize, currentPage * pageSize); 
+  const handleCardClick = (gameId) => {
+    navigate(`/Catalogo/game/${gameId}`);
+  };
+  const displayedGames = games.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   return (
     <div className="d-flex flex-wrap">
@@ -95,12 +100,11 @@ const GameCatalog = () => {
           <>
             <div className="row">
               {displayedGames.map((game) => (
-                <div className="col-lg-4 col-md-6 col-sm-12 mb-3" key={game.id}>
+                <div className="col-lg-4 col-md-6 col-sm-12 mb-3" key={game.id} onClick={() => handleCardClick(game.id)}>
                   <div className="card game-card">
                     <img src={game.background_image} alt={game.name} className="card-img-top" />
                     <div className="card-body">
                       <h5 className="card-title">{game.name}</h5>
-               
                     </div>
                   </div>
                 </div>

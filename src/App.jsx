@@ -12,10 +12,12 @@ import LastOfUs2Page from './ComponentsHome/TheLastOfUs2';
 import { CartProvider } from './ComponentsHome/CartContext';
 import Cart from './ComponentsHome/Cart';
 import HaloInfinite from './ComponentsHome/HaloInfinite';
-import Presetazione from  './Gestione Pagine/Presentazione'
+import Presetazione from './Gestione Pagine/Presentazione';
+import GameDetails from './ComponentsCatalogo/GameDetails'; // Assicurati di importare GameDetails
+
 function App() {
   const apiKey = 'f511273fe9734983b1d420685c9477f5';
-  
+
   return (
     <CartProvider>
       <BrowserRouter>
@@ -23,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home apiKey={apiKey} />} />
           <Route path="/Catalogo" element={<Catalogo />} />
+          <Route path="/Catalogo/game/:id" element={<GameDetails />} /> {/* Aggiungi questa route per GameDetails */}
           <Route path="/game/blackcell" element={<BlackCellPage />} />
           <Route path="/game/nier-automata" element={<NierAutomataPage />} />
           <Route path="/game/last-of-us-2" element={<LastOfUs2Page />} />

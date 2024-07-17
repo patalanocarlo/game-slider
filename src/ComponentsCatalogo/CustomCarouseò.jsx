@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Container, Row, Col, Badge } from 'react-bootstrap';
+import React, { useEffect, useState, useContext } from 'react';
+import { Card, Container, Row, Col, Badge, Button } from 'react-bootstrap';
+import { CartContext } from '../ComponentsHome/CartContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../StyleCatalogo/CustomCarousel.css';
 
 const CustomCards = () => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { addToCart, isItemAdded } = useContext(CartContext);
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -66,7 +68,13 @@ const CustomCards = () => {
                   <Card.Text>
                     <p>Valutazione: {game.rating}</p>
                     <p>Prezzo: ${(game.price * (1 - game.discount / 100)).toFixed(2)} (Scontato da ${game.price})</p>
-                    <button>Aggiungi Al Carrello</button>
+                    <Button 
+                      variant={isItemAdded(game.id) ? 'danger' : 'warning'}
+                      onClick={() => addToCart(game)}
+                      disabled={isItemAdded(game.id)}
+                    >
+                      {isItemAdded(game.id) ? 'Aggiunto al carrello' : 'Aggiungi al carrello'}
+                    </Button>
                   </Card.Text>
                 </Card.Body>
               </Card>
