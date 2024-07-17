@@ -1,15 +1,15 @@
-
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../StyleHome/Navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { CartContext } from '../ComponentsHome/CartContext'; 
 
 const CustomNavbar = () => {  
   const [showCollapse, setShowCollapse] = useState(false);
-  const [cartCount, ] = useState(0); 
+  const { cart } = useContext(CartContext); 
 
   const handleToggleCollapse = () => {
     setShowCollapse(!showCollapse);
@@ -32,7 +32,7 @@ const CustomNavbar = () => {
             <Nav.Link as={Link} to="/Contattaci">Contattaci</Nav.Link>
             <Nav.Link as={Link} to="/cart">
               <FontAwesomeIcon icon={faShoppingCart} />
-              <span className="cart-count ">{cartCount}</span>
+              <span className="cart-count">{cart.length}</span> 
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

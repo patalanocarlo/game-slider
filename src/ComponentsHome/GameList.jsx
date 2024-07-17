@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import '../StyleHome/GameList.css';
+import { CartContext } from '../ComponentsHome/CartContext';
 
 const GameList = ({ apiKey, genre, year }) => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { addToCart, isItemAdded } = useContext(CartContext);
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -14,7 +16,11 @@ const GameList = ({ apiKey, genre, year }) => {
           throw new Error('Errore nel caricamento dei dati');
         }
         const data = await response.json();
-        setGames(data.results);
+        const gamesWithPrices = data.results.map(game => ({
+          ...game,
+          price: (Math.random() * (69.99 - 30) + 30).toFixed(2)  
+        }));
+        setGames(gamesWithPrices);
         setLoading(false);
       } catch (error) {
         console.error('Errore:', error);
@@ -41,6 +47,8 @@ const GameList = ({ apiKey, genre, year }) => {
   };
 
   const renderGameCard = (game) => {
+    const isAdded = isItemAdded(game.id);
+
     return (
       <Col key={game.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
         <Card className="game-card">
@@ -51,7 +59,15 @@ const GameList = ({ apiKey, genre, year }) => {
               Pubblicato il: {new Date(game.released).toLocaleDateString('it-IT')}
             </Card.Text>
             <Card.Text>Rating: {game.rating}</Card.Text>
-            <Button variant="primary" className="add-to-cart-btn">Aggiungi al carrello</Button>
+            <Card.Text>Prezzo: {game.price} €</Card.Text>
+            <Button 
+              variant={isAdded ? "danger" : "primary"} 
+              className={isAdded ? "added-to-cart-btn" : "add-to-cart-btn"} 
+              onClick={() => addToCart(game)}
+              disabled={isAdded}
+            >
+              {isAdded ? "Aggiunto" : "Aggiungi al carrello"}
+            </Button>
           </Card.Body>
         </Card>
       </Col>

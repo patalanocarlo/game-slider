@@ -101,3 +101,25 @@
     height: 100%;
   }
 }
+.add-to-cart-btn {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.added-to-cart-btn {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+.added-to-cart-btn:disabled {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  opacity: 0.65;
+}
