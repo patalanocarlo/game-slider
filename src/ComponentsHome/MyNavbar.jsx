@@ -34,6 +34,8 @@ const CustomNavbar = () => {
               <FontAwesomeIcon icon={faShoppingCart} />
               <span className="cart-count">{cart.length}</span> 
             </Nav.Link>
+            <Nav.Link as={Link} to="/login">Login</Nav.Link> {/* Add login link */}
+            <Nav.Link as={Link} to="/register">Register</Nav.Link> {/* Add register link */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
