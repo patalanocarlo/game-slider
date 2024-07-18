@@ -2,12 +2,16 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../StyleCatalogo/GalleryGame.css'; 
-
+import { useNavigate } from 'react-router-dom';
 const HorizontalScrollGallery = () => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page] = useState(1);
   const galleryRef = useRef(null);
+  const navigate = useNavigate();
+  const handleCardClick = (gameId) => {
+    navigate(`/Catalogo/game/${gameId}`);
+  };
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -54,13 +58,13 @@ const HorizontalScrollGallery = () => {
     <div className="gallery-container">
       <h2 className='text-center mb-4'>Scegli tra un immenso Catalogo di Giochi</h2>
       <div className="gallery-wrapper">
-        <button className="scroll-button left" onClick={() => handleScroll('left')}>&lt;</button>
+        <button className="scroll-button left " onClick={() => handleScroll('left')}>&lt;</button>
         <div className="gallery" ref={galleryRef}>
           {loading ? (
             renderLoadingPlaceholder()
           ) : (
             games.map((game) => (
-              <div className="gallery-item" key={game.id}>
+              <div className="gallery-item"  key={game.id} onClick={() => handleCardClick(game.id)}>
                 <div className="card">
                   <img src={game.background_image} alt={game.name} className="img-fluid" />
                   <div className="card-body">
