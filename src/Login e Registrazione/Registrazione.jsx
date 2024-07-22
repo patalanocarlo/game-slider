@@ -18,11 +18,29 @@ const Register = () => {
         <Col md={6} lg={4}>
           <h2 className="text-center">Register</h2>
           <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="formBasicEmail">
+              <Form.Label>Nome</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Inserisci un Nome"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Cognome</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Inserisci un Cognome"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="Digita un email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -42,7 +60,7 @@ const Register = () => {
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Confirm Password"
+                placeholder="Conferma Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
