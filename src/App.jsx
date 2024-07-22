@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './ComponentsHome/MyNavbar';
 import Home from './Gestione Pagine/Home';
-
+import ContactUs from './ComponentsHome/Contattaci';
 import Catalogo from './Gestione Pagine/Catalogo';
 import BlackCellPage from './ComponentsHome/BlackCellPage';
 import NierAutomataPage from './ComponentsHome/NierAutomataPage';
@@ -36,6 +36,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/Contattaci" element={<ContactUs />} /> 
         </Routes>
       
       </BrowserRouter>

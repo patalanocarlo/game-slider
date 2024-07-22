@@ -19,7 +19,7 @@ const Carousel = () => {
     };
 
     return (
-        <div className="carousel">
+        <div className="carousel ">
             <button onClick={prevSlide} className="carousel-button prev">‹</button>
             <div className="carousel-images" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 {images.map((image, index) => (
