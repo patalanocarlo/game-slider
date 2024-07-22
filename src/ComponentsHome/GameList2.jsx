@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import '../StyleHome/AnotherGameList.css';
 import { CartContext } from '../ComponentsHome/CartContext'; // Import CartContext
 
-const GameList = ({ apiKey, genre, year }) => {
+const GameList2 = ({ apiKey, genre, year }) => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const { addToCart, isItemAdded } = useContext(CartContext); // Use context
@@ -93,4 +93,4 @@ const GameList = ({ apiKey, genre, year }) => {
   );
 };
 
-export default GameList;
+export default GameList2;
