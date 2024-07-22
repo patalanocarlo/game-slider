@@ -11,7 +11,6 @@ const Cart = () => {
   const getTotalPrice = () => {
     return cart.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2);
   };
-
   return (
     <Container className="my-4">
       <Row>
