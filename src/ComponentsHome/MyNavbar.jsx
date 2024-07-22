@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from '../ComponentsHome/CartContext'; 
-
+import LogoHome from '../Images/LogoPrincipale.png'
 const CustomNavbar = () => {  
   const [showCollapse, setShowCollapse] = useState(false);
   const { cart } = useContext(CartContext); 
@@ -19,7 +19,7 @@ const CustomNavbar = () => {
     <div className='custom-navbar'>
       <Navbar expand="lg" variant="dark" className="container">
         <Navbar.Brand as={Link} to="/">
-          <img src="imagee" alt="Deco Logo" className="navbar-logo" />
+          <img src={LogoHome} alt="Deco Logo" className="navbar-logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={handleToggleCollapse} />
         <Navbar.Collapse id="responsive-navbar-nav" className={showCollapse ? 'show' : ''}>

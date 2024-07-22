@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import { CartContext } from '../ComponentsHome/CartContext';
 import '../StyleHome/Cart.css'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Cart = () => {
   const { cart, removeFromCart } = useContext(CartContext);
@@ -14,7 +16,7 @@ const Cart = () => {
     <Container className="my-4">
       <Row>
         <Col md={8}>
-          <h2 className='mt-5'>Carrello</h2>
+          <h2 className='margin'>Carrello</h2>
           {cart.map((item, index) => (
             <div key={index} className="cart-item mb-4">
               <Row>
@@ -22,25 +24,26 @@ const Cart = () => {
                   <Image className="cart-item-image" src={item.background_image} fluid rounded /> 
                 </Col>
                 <Col xs={7} sm={8} md={9}>
-                  <h4>{item.name}</h4>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <h4>{item.name}</h4>
+                    <Button 
+                      variant="danger" 
+                      onClick={() => removeFromCart(item.id)}
+                      className="ml-2"
+                    >
+                      <FontAwesomeIcon icon={faTrashAlt} />
+                    </Button>
+                  </div>
                   <p>Prezzo: {item.price} €</p>
                   <p>Rating: {item.rating}</p>
                   <p>Data di uscita: {new Date(item.released).toLocaleDateString('it-IT')}</p>
-                  {/* Remove button */}
-                  <Button 
-                    variant="danger" 
-                    onClick={() => removeFromCart(item.id)} 
-                    style={{ float: 'right', marginLeft: '10px' }}
-                  >
-                    X
-                  </Button>
                 </Col>
               </Row>
             </div>
           ))}
         </Col>
         <Col md={4}>
-          <h2 className='mt-5'>Riepilogo</h2>
+          <h2 className='margin'>Riepilogo</h2>
           <p>Totale: {getTotalPrice()} €</p>
           <Button variant="success">Acquista</Button>
         </Col>

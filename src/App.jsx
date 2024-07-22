@@ -16,6 +16,11 @@ import Presetazione from './Gestione Pagine/Presentazione';
 import GameDetails from './ComponentsCatalogo/GameDetails'; 
 import Login from './Login e Registrazione/Login';
 import Register from './Login e Registrazione/Registrazione';
+
+import TerminiDuso from './FooterInfo/TerminiDuso'; 
+import InformativaPrivacy from './FooterInfo/Privacy'; 
+import PoliticaCookie from './FooterInfo/PoliticaCookie'; 
+
 function App() {
   const apiKey = 'f511273fe9734983b1d420685c9477f5';
 
@@ -37,6 +42,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/Contattaci" element={<ContactUs />} /> 
+     
+          <Route path="/termini-duso" element={<TerminiDuso />} />
+          <Route path="/informativa-privacy" element={<InformativaPrivacy />} />
+          <Route path="/politica-cookie" element={<PoliticaCookie />} />
+
         </Routes>
       
       </BrowserRouter>
