@@ -1,14 +1,37 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
+    try {
+      const response = await fetch('http://localhost:3001/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Credenziali non valide');
+      }
+
+      const data = await response.text(); 
+      localStorage.setItem('authToken', data); 
+      setSuccess(true);
+      setError('');
+   
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -16,31 +39,37 @@ const Login = () => {
       <Row className="justify-content-center w-100">
         <Col md={6} lg={4}>
           <h2 className="text-center">Login</h2>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
-
-            <Button variant="primary" type="submit" className="w-100 mt-3">
-              Login
-            </Button>
-          </Form>
+          {!success ? (
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Form.Group>
+              <Button variant="primary" type="submit" className="w-100 mt-3">
+                Login
+              </Button>
+              {error && <p className="text-danger mt-3">{error}</p>}
+            </Form>
+          ) : (
+            <div className="text-center">
+              <p>Login completato con successo!</p>
+              <Link to="/" className="btn btn-primary">Vai alla Homepage</Link>
+            </div>
+          )}
           <div className="mt-3 text-center">
             <Link to="/register">Don't have an account? Register here</Link>
           </div>
