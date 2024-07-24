@@ -1,11 +1,27 @@
 import React, { useState } from 'react';
 import '../StyleHome/ContactUs.css';
+import { useNavigate } from 'react-router-dom'; 
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     subject: '',
     message: ''
   });
+
+  const [isLoggedIn, setIsLoggedIn] = useState(true); 
+  const [feedbackMessage, setFeedbackMessage] = useState('');
+
+  const navigate = useNavigate();
+
+
+  const checkLogin = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+      setIsLoggedIn(false);
+      return false;
+    }
+    return true;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,6 +33,8 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!checkLogin()) return; 
 
     const token = localStorage.getItem('authToken');
 
@@ -33,23 +51,46 @@ const ContactUs = () => {
         })
       });
 
-      const result = await response.text();
-      console.log('Form submitted:', result);
+      if (response.ok) {
+        const result = await response.text();
+        setFeedbackMessage('La mail è stata spedita, grazie di averci contattato!');
+        console.log('Form submitted:', result);
 
-      // Pulisci il modulo
-      setFormData({
-        subject: '',
-        message: ''
-      });
+
+        setFormData({
+          subject: '',
+          message: ''
+        });
+      } else {
+        const error = await response.text();
+        setFeedbackMessage(`Errore: ${error}`);
+      }
     } catch (error) {
-      console.error('Errore durente la consegna del modulo', error);
+      console.error('Errore durante la consegna del modulo', error);
+      setFeedbackMessage('Errore durante la consegna del modulo.');
     }
   };
 
+  const handleLoginRedirect = () => {
+    navigate('/login'); 
+  };
+
+  if (!isLoggedIn) {
+    return (
+      <div className="contact-us">
+        <div className="contact-us-container">
+          <h3>Ci Dispiace!</h3>
+          <p>Per inviare un'email, devi essere loggato.</p>
+          <button onClick={handleLoginRedirect} className="btn btn-secondary">Vai al login</button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="contact-us">
+    <div className="contact-us ">
       <div className="contact-us-container">
-        <h2>Contattaci</h2>
+        <h3>Contattaci</h3>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="subject">Oggetto:</label>
@@ -74,6 +115,7 @@ const ContactUs = () => {
           </div>
           <button type="submit" className="btn btn-primary">Invia</button>
         </form>
+        {feedbackMessage && <p>{feedbackMessage}</p>}
       </div>
     </div>
   );

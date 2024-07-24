@@ -35,6 +35,10 @@ const Login = () => {
     }
   };
 
+  const handleHomeRedirect = () => {
+    navigate('/'); // Redirige alla home
+  };
+
   return (
     <Container className="d-flex align-items-center justify-content-center min-vh-100">
       <Row className="justify-content-center w-100">
@@ -62,6 +66,13 @@ const Login = () => {
               </Form.Group>
               <Button variant="primary" type="submit" className="w-100 mt-3">
                 Login
+              </Button>
+              <Button 
+                variant="secondary" 
+                className="w-100 mt-2"
+                onClick={handleHomeRedirect}
+              >
+                Torna alla Home
               </Button>
               {error && <p className="text-danger mt-3">{error}</p>}
             </Form>
