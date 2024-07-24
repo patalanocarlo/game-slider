@@ -3,8 +3,6 @@ import '../StyleHome/ContactUs.css';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
     subject: '',
     message: ''
   });
@@ -17,17 +15,35 @@ const ContactUs = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your email sending logic here, for example, using an API or a backend service
-    console.log('Form submitted:', formData);
-    // Clear the form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+
+    const token = localStorage.getItem('authToken');
+
+    try {
+      const response = await fetch('http://localhost:3001/api/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          subject: formData.subject,
+          message: formData.message
+        })
+      });
+
+      const result = await response.text();
+      console.log('Form submitted:', result);
+
+      // Pulisci il modulo
+      setFormData({
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Errore durente la consegna del modulo', error);
+    }
   };
 
   return (
@@ -35,28 +51,6 @@ const ContactUs = () => {
       <div className="contact-us-container">
         <h2>Contattaci</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Nome:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
           <div className="form-group">
             <label htmlFor="subject">Oggetto:</label>
             <input

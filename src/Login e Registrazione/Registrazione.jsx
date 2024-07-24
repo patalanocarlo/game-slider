@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import seaOfThievesImage from '../Images/videos/sea-of-thieves-sot.gif'; // Use the correct path to the image
 
 const Register = () => {
   const [nome, setNome] = useState('');
@@ -49,11 +50,11 @@ const Register = () => {
   return (
     <Container className="d-flex align-items-center justify-content-center min-vh-100">
       <Row className="justify-content-center w-100">
-        <Col md={6} lg={4}>
-          <h2 className="text-center">Register</h2>
+        <Col md={6} lg={5}>
+          <h2 className="text-center mb-4">Registrazione</h2>
           {!success ? (
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formBasicNome">
+            <Form onSubmit={handleSubmit} className="border p-4 rounded shadow-sm bg-light">
+              <Form.Group controlId="formBasicNome" className="mb-3">
                 <Form.Label>Nome</Form.Label>
                 <Form.Control
                   type="text"
@@ -62,7 +63,7 @@ const Register = () => {
                   onChange={(e) => setNome(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicCognome">
+              <Form.Group controlId="formBasicCognome" className="mb-3">
                 <Form.Label>Cognome</Form.Label>
                 <Form.Control
                   type="text"
@@ -71,7 +72,7 @@ const Register = () => {
                   onChange={(e) => setCognome(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicUsername">
+              <Form.Group controlId="formBasicUsername" className="mb-3">
                 <Form.Label>Username</Form.Label>
                 <Form.Control
                   type="text"
@@ -80,7 +81,7 @@ const Register = () => {
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicEmail">
+              <Form.Group controlId="formBasicEmail" className="mb-3">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
@@ -89,7 +90,7 @@ const Register = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
+              <Form.Group controlId="formBasicPassword" className="mb-3">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
@@ -98,7 +99,7 @@ const Register = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controlId="formConfirmPassword">
+              <Form.Group controlId="formConfirmPassword" className="mb-3">
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control
                   type="password"
@@ -114,8 +115,10 @@ const Register = () => {
             </Form>
           ) : (
             <div className="text-center">
-              <p>Registrazione completata con successo!</p>
-              <Link to="/login" className="btn btn-primary">Vai al Login</Link>
+              <p className="h4">Registrazione completata con successo!</p>
+              <h4 className="mb-4">Benvenuto nella nostra famiglia!</h4>
+              <Image src={seaOfThievesImage} alt="Benvenuto" fluid className="mb-4"/>
+              <Link to="/login" className="btn btn-primary mt-3">Vai al Login</Link>
             </div>
           )}
         </Col>
