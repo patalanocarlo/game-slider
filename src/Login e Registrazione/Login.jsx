@@ -3,11 +3,11 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
-
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,18 +17,19 @@ const Login = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: email, password }),
+        body: JSON.stringify({ username, password }),
       });
 
       if (!response.ok) {
         throw new Error('Credenziali non valide');
       }
 
-      const data = await response.text(); 
+      const data = await response.text();
       localStorage.setItem('authToken', data); 
       setSuccess(true);
       setError('');
-   
+      navigate('/');  
+
     } catch (err) {
       setError(err.message);
     }
@@ -41,13 +42,13 @@ const Login = () => {
           <h2 className="text-center">Login</h2>
           {!success ? (
             <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
+              <Form.Group controlId="formBasicUsername">
+                <Form.Label>Username</Form.Label>
                 <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  type="text"
+                  placeholder="Enter username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">

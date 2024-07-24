@@ -28,10 +28,10 @@ const Register = () => {
         body: JSON.stringify({
           nome,
           cognome,
-          username: email,
+          username,
           email,
           password,
-          ruoloId: 1, // Usa l'ID del ruolo appropriato
+          ruoloId: 1, 
         }),
       });
 

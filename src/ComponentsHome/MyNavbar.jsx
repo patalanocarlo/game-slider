@@ -6,9 +6,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from '../ComponentsHome/CartContext';
-import LogoHome from '../Images/LogoPrincipale.png'
+import LogoHome from '../Images/LogoPrincipale.png';
 
-const CustomNavbar = () => {  
+const CustomNavbar = () => {
   const [showCollapse, setShowCollapse] = useState(false);
   const [username, setUsername] = useState('');
   const { cart } = useContext(CartContext);
@@ -17,10 +17,29 @@ const CustomNavbar = () => {
   useEffect(() => {
     const token = localStorage.getItem('authToken');
     if (token) {
-   
-      setUsername('User'); 
+      const decodedToken = decodeJWT(token);
+      if (decodedToken && decodedToken.username) {
+        setUsername(decodedToken.username);
+      }
     }
   }, []);
+
+  const decodeJWT = (token) => {
+    try {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split('')
+          .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .join('')
+      );
+      return JSON.parse(jsonPayload);
+    } catch (error) {
+      console.error('Invalid token', error);
+      return null;
+    }
+  };
 
   const handleToggleCollapse = () => {
     setShowCollapse(!showCollapse);
@@ -47,10 +66,6 @@ const CustomNavbar = () => {
           <Nav>
             <Nav.Link as={Link} to="/Catalogo">Catalogo e Offerte Videogiochi</Nav.Link>
             <Nav.Link as={Link} to="/Contattaci">Contattaci</Nav.Link>
-            <Nav.Link as={Link} to="/cart">
-              <FontAwesomeIcon icon={faShoppingCart} />
-              <span className="cart-count">{cart.length}</span> 
-            </Nav.Link>
             {username ? (
               <>
                 <Nav.Link className="welcome-message">Benvenuto, {username}</Nav.Link>
@@ -62,6 +77,10 @@ const CustomNavbar = () => {
                 <Nav.Link as={Link} to="/register">Register</Nav.Link>
               </>
             )}
+               <Nav.Link as={Link} to="/cart">
+              <FontAwesomeIcon icon={faShoppingCart} />
+              <span className="cart-count">{cart.length}</span> 
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
