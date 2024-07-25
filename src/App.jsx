@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CartProvider } from './ComponentsHome/CartContext';
 
-// Import pages and components
+
 import Home from './Gestione Pagine/Home';
 import ContactUs from './ComponentsHome/Contattaci';
 import Catalogo from './Gestione Pagine/Catalogo';

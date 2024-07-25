@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../StyleHome/ContactUs.css';
 import { useNavigate } from 'react-router-dom'; 
-
+import backgroundImage from '../Images/10161184.jpg'
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     subject: '',
@@ -13,6 +13,9 @@ const ContactUs = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    checkLogin();
+  }, []);
 
   const checkLogin = () => {
     const token = localStorage.getItem('authToken');
@@ -56,7 +59,6 @@ const ContactUs = () => {
         setFeedbackMessage('La mail è stata spedita, grazie di averci contattato!');
         console.log('Form submitted:', result);
 
-
         setFormData({
           subject: '',
           message: ''
@@ -77,7 +79,7 @@ const ContactUs = () => {
 
   if (!isLoggedIn) {
     return (
-      <div className="contact-us">
+      <div className="contact-us" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="contact-us-container">
           <h3>Ci Dispiace!</h3>
           <p>Per inviare un'email, devi essere loggato.</p>
@@ -88,7 +90,7 @@ const ContactUs = () => {
   }
 
   return (
-    <div className="contact-us ">
+    <div className="contact-us" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="contact-us-container">
         <h3>Contattaci</h3>
         <form onSubmit={handleSubmit}>
@@ -115,7 +117,7 @@ const ContactUs = () => {
           </div>
           <button type="submit" className="btn btn-primary">Invia</button>
         </form>
-        {feedbackMessage && <p>{feedbackMessage}</p>}
+        {feedbackMessage && <p className="feedback-message">{feedbackMessage}</p>}
       </div>
     </div>
   );

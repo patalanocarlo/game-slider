@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import '../StyleLogin&Registrazione/Login.css'; 
+import backgroundImage from '../Images/view-illuminated-neon-gaming-keyboard-setup-controller.jpg'; 
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -36,58 +38,56 @@ const Login = () => {
   };
 
   const handleHomeRedirect = () => {
-    navigate('/'); // Redirige alla home
+    navigate('/'); 
   };
 
   return (
-    <Container className="d-flex align-items-center justify-content-center min-vh-100">
-      <Row className="justify-content-center w-100">
-        <Col md={6} lg={4}>
-          <h2 className="text-center">Login</h2>
-          {!success ? (
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formBasicUsername">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Form.Group>
-              <Button variant="primary" type="submit" className="w-100 mt-3">
-                Login
-              </Button>
-              <Button 
-                variant="secondary" 
-                className="w-100 mt-2"
-                onClick={handleHomeRedirect}
-              >
-                Torna alla Home
-              </Button>
-              {error && <p className="text-danger mt-3">{error}</p>}
-            </Form>
-          ) : (
-            <div className="text-center">
-              <p>Login completato con successo!</p>
-              <Link to="/" className="btn btn-primary">Vai alla Homepage</Link>
-            </div>
-          )}
-          <div className="mt-3 text-center">
-            <Link to="/register">Don't have an account? Register here</Link>
+    <div className="login-background" style={{ backgroundImage: `url(${backgroundImage})` }}>
+      <div className="login-form-container">
+        <h2 className="text-center">Accedi</h2>
+        {!success ? (
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formBasicUsername">
+              <Form.Control
+                type="text"
+                placeholder="Inserisci il tuo Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="login-input"
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="login-input"
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit" className="login-button">
+              Next
+            </Button>
+            {error && <p className="text-danger ">{error}</p>}
+          </Form>
+        ) : (
+          <div className="text-center">
+            <p>Login completato con successo!</p>
+            <Link to="/" className="btn btn-primary">Vai alla Homepage</Link>
           </div>
-        </Col>
-      </Row>
-    </Container>
+        )}
+        <div className="text-center mt-3">
+          <Link to="/register">Non hai un account?Registrati Qui</Link>
+          <Button 
+            variant="secondary" 
+            className="home-button mt-2"
+            onClick={handleHomeRedirect}
+          >
+            Torna alla Home
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 };
 
