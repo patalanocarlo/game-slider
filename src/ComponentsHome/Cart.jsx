@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Container, Row, Col, Button, Image, Modal } from 'react-bootstrap'; // Importa Modal
+import { Container, Row, Col, Button, Image, Modal } from 'react-bootstrap';
 import { CartContext } from '../ComponentsHome/CartContext';
 import '../StyleHome/Cart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const stripePromise = loadStripe('pk_test_51PgiuoRoqJCjOJgQOgcXBwJSUQuqkluMbchOS3bM2PAA9JsbycUco5Y9kOoHjYravhi37L25wKhACAp1JDT0vn1700owDLitg8');
 
@@ -163,13 +163,15 @@ const Cart = () => {
             </div>
           ))}
         </Col>
-        <Col md={4}>
-          <h2 className='margin'>Riepilogo</h2>
-          <p>Totale: {getTotalPrice()} €</p>
-          <Elements stripe={stripePromise}>
-            <CheckoutForm />
-          </Elements>
-        </Col>
+        <div className="cart-summary-container">
+          <div className="cart-summary-content">
+            <h2 className='margin'>Riepilogo</h2>
+            <p>Totale: {getTotalPrice()} €</p>
+            <Elements stripe={stripePromise}>
+              <CheckoutForm />
+            </Elements>
+          </div>
+        </div>
       </Row>
     </Container>
   );

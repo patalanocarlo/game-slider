@@ -1,15 +1,31 @@
-.cart-item-image {
-  width: 100%;
-  max-width: 250px;
-  height: auto;
+/* Cart.css */
+
+.cart-summary-container {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 500px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 8px 0 0 8px;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
 }
 
-/* Stili per il form di checkout */
+.cart-summary-content {
+  text-align: center;
+}
+
 .checkout-form {
   background: #f8f9fa;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
 /* Stili per il messaggio di errore */
@@ -17,7 +33,6 @@
   color: #dc3545;
 }
 
-/* Stili per il modal personalizzato */
 .custom-modal .modal-content {
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -26,6 +41,16 @@
 .custom-modal .modal-header {
   border-bottom: none;
   padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.custom-modal .modal-header .close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
 }
 
 .custom-modal .modal-body {
