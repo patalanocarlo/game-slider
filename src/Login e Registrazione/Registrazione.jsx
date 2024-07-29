@@ -38,12 +38,18 @@ const Register = () => {
         }),
       });
 
-      if (!response.ok) {
+      const responseData = await response.text(); 
+
+      if (responseData === 'Email già in uso') {
+        setError('Email già in uso');
+      } else if (responseData === 'Username già in uso') {
+        setError('Username già in uso');
+      } else if (responseData === 'Registrazione completata') {
+        setSuccess(true);
+        setError('');
+      } else {
         throw new Error('Errore nella registrazione');
       }
-
-      setSuccess(true);
-      setError('');
     } catch (err) {
       setError(err.message);
     }
