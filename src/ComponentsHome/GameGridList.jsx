@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from './CartContext'; 
 import '../StyleHome/GameList.css'; 
 
@@ -7,6 +8,7 @@ const GameGrid = ({ apiKey, genre, year }) => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const { addToCart, isItemAdded } = useContext(CartContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -51,7 +53,7 @@ const GameGrid = ({ apiKey, genre, year }) => {
 
     return (
       <Col key={game.id} xs={12} sm={6} md={4} lg={4} className="mb-4">
-        <Card className="game-card h-100">
+        <Card className="game-card h-100" onClick={() => navigate(`/Catalogo/game/${game.id}`)}>
           <Card.Img variant="top" src={game.background_image} />
           <Card.Body>
             <Card.Title>{game.name}</Card.Title>
@@ -63,7 +65,7 @@ const GameGrid = ({ apiKey, genre, year }) => {
             <Button 
               variant={isAdded ? "danger" : "primary"} 
               className={isAdded ? "added-to-cart-btn" : "add-to-cart-btn"} 
-              onClick={() => addToCart(game)}
+              onClick={(e) => {e.stopPropagation(); addToCart(game);}}
               disabled={isAdded}
             >
               {isAdded ? "Aggiunto" : "Aggiungi al carrello"}
@@ -78,7 +80,7 @@ const GameGrid = ({ apiKey, genre, year }) => {
     <Container className="my-4">
       {games.length > 0 && (
         <div className="mb-4">
-          <Card className="bg-dark text-white game-card">
+          <Card className="bg-dark text-white game-card" onClick={() => navigate(`/Catalogo/game/${games[0].id}`)}>
             <Card.Img
               src={games[0].background_image}
               alt={games[0].name}
@@ -90,7 +92,7 @@ const GameGrid = ({ apiKey, genre, year }) => {
               <Button 
                 variant={isItemAdded(games[0].id) ? "danger" : "primary"} 
                 className={`top-card-btn ${isItemAdded(games[0].id) ? "added-to-cart-btn" : "add-to-cart-btn"}`} 
-                onClick={() => addToCart(games[0])}
+                onClick={(e) => {e.stopPropagation(); addToCart(games[0]);}}
                 disabled={isItemAdded(games[0].id)}
               >
                 {isItemAdded(games[0].id) ? "Aggiunto" : "Aggiungi al carrello"}

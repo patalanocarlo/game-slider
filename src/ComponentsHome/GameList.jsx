@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import '../StyleHome/GameList.css';
 import { CartContext } from '../ComponentsHome/CartContext';
 
@@ -7,6 +8,7 @@ const GameList = ({ apiKey, genre, year }) => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const { addToCart, isItemAdded } = useContext(CartContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -51,7 +53,7 @@ const GameList = ({ apiKey, genre, year }) => {
 
     return (
       <Col key={game.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
-        <Card className="game-card">
+        <Card className="game-card" onClick={() => navigate(`/Catalogo/game/${game.id}`)}>
           <Card.Img variant="top" src={game.background_image} />
           <Card.Body>
             <Card.Title>{game.name}</Card.Title>
@@ -63,7 +65,7 @@ const GameList = ({ apiKey, genre, year }) => {
             <Button 
               variant={isAdded ? "danger" : "primary"} 
               className={isAdded ? "added-to-cart-btn" : "add-to-cart-btn"} 
-              onClick={() => addToCart(game)}
+              onClick={(e) => {e.stopPropagation(); addToCart(game);}}
               disabled={isAdded}
             >
               {isAdded ? "Aggiunto" : "Aggiungi al carrello"}

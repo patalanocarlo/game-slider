@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import '../StyleHome/AnotherGameList.css';
-import { CartContext } from '../ComponentsHome/CartContext'; // Import CartContext
+import { CartContext } from '../ComponentsHome/CartContext';
 
 const GameList2 = ({ apiKey, genre, year }) => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { addToCart, isItemAdded } = useContext(CartContext); // Use context
+  const { addToCart, isItemAdded } = useContext(CartContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -16,10 +18,9 @@ const GameList2 = ({ apiKey, genre, year }) => {
           throw new Error('Errore nel caricamento dei dati');
         }
         const data = await response.json();
-        // Add random price to each game
         const gamesWithPrices = data.results.map(game => ({
           ...game,
-          price: (Math.random() * (69.99 - 30) + 30).toFixed(2), // Random price between 30 and 69.99
+          price: (Math.random() * (69.99 - 30) + 30).toFixed(2)  
         }));
         setGames(gamesWithPrices);
         setLoading(false);
@@ -48,11 +49,11 @@ const GameList2 = ({ apiKey, genre, year }) => {
   };
 
   const renderGameCard = (game) => {
-    const isAdded = isItemAdded(game.id); // Check if the game is added
+    const isAdded = isItemAdded(game.id);
 
     return (
       <Col key={game.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
-        <Card className="game-card">
+        <Card className="game-card" onClick={() => navigate(`/Catalogo/game/${game.id}`)}>
           <Card.Img variant="top" src={game.background_image} />
           <Card.Body>
             <Card.Title>{game.name}</Card.Title>
@@ -60,12 +61,12 @@ const GameList2 = ({ apiKey, genre, year }) => {
               Pubblicato il: {new Date(game.released).toLocaleDateString('it-IT')}
             </Card.Text>
             <Card.Text>Rating: {game.rating}</Card.Text>
-            <Card.Text>Prezzo: {game.price} €</Card.Text> {/* Display random price */}
+            <Card.Text>Prezzo: {game.price} €</Card.Text>
             <Button 
               variant={isAdded ? "danger" : "primary"} 
               className={isAdded ? "added-to-cart-btn" : "add-to-cart-btn"} 
-              onClick={() => isAdded ? null : addToCart(game)} // Prevent adding if already added
-              disabled={isAdded} // Disable if already added
+              onClick={(e) => {e.stopPropagation(); addToCart(game);}}
+              disabled={isAdded}
             >
               {isAdded ? "Aggiunto" : "Aggiungi al carrello"}
             </Button>
@@ -79,7 +80,7 @@ const GameList2 = ({ apiKey, genre, year }) => {
     <Container className="my-4">
       <Row className="justify-content-center">
         <Col>
-          <h1 className="text-center mb-4">Best Shooter</h1>
+          <h1 className="text-center mb-4">Giochi Recenti</h1>
         </Col>
       </Row>
       <Row>

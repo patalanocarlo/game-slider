@@ -52,24 +52,24 @@ const GameDetailPage = ({ apiKey }) => {
       <Row>
         <Col md={6}>
           <Image src={game.background_image} fluid className="game-detail-image" />
+          <h3 className="game-detail-price">Prezzo: {game.price} €</h3>
+          <Button
+            variant={isAdded ? 'danger' : 'primary'}
+            onClick={() => addToCart(game)}
+            disabled={isAdded}
+            className={`game-detail-btn ${isAdded ? 'game-detail-added-to-cart-btn' : 'game-detail-add-to-cart-btn'}`}
+          >
+            {isAdded ? 'Aggiunto' : 'Aggiungi al carrello'}
+          </Button>
+          <Link to="/Catalogo" className="btn btn-secondary game-detail-btn">
+            Torna al Catalogo
+          </Link>
         </Col>
         <Col md={6} className="mt-5">
           <h1 className="game-detail-title">{game.name}</h1>
           <p className="game-detail-text">Pubblicato il: {new Date(game.released).toLocaleDateString('it-IT')}</p>
           <p className="game-detail-text">Rating: {game.rating}</p>
           <p className="game-detail-text">{game.description_raw}</p>
-          <h3 className="game-detail-price">Prezzo: {game.price} €</h3>
-          <Button
-            variant={isAdded ? 'danger' : 'primary'}
-            onClick={() => addToCart(game)}
-            disabled={isAdded}
-            className={isAdded ? 'game-detail-added-to-cart-btn' : 'game-detail-add-to-cart-btn'}
-          >
-            {isAdded ? 'Aggiunto' : 'Aggiungi al carrello'}
-          </Button>
-          <Link to="/Catalogo" className="btn btn-secondary ml-3">
-            Torna al Catalogo
-          </Link>
         </Col>
       </Row>
       <Row className="mt-4">
