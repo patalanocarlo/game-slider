@@ -57,7 +57,7 @@ const BannerPresentazione = () => {
               <small>2 giorni fa</small>
             </div>
             <div className="news-item large-item">
-             <Link to="/game/last-of-us-3">
+             <Link to="/game/last-of-us-2">
              <img src={Image5} alt="Patch Notes" />
              </Link>
               <p>Un Mondo ormai in Epidemia, ma con ancora una speranza.</p>
