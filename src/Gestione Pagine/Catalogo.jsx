@@ -5,7 +5,7 @@ import Gallerygame from '../ComponentsCatalogo/GalleryGame';
 import Footer from '../ComponentsHome/FooterHomepage';
 import MyRicercaCategoria from '../ComponentsCatalogo/MyRicercaperCategoria';
 import GameShowcase from '../ComponentsCatalogo/GameShowCase';
-import GameDetails from '../ComponentsCatalogo/GameDetails'; 
+
 
 function Catalogo() {
   return (
@@ -15,7 +15,7 @@ function Catalogo() {
       <Gallerygame />
       <GameShowcase />
       <Routes>
-        <Route path="/Catalogo/game/:id" element={<GameDetails />} />
+ 
       </Routes>
       <Footer />
     </div>

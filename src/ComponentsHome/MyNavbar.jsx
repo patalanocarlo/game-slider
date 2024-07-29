@@ -64,7 +64,7 @@ const CustomNavbar = () => {
             <Nav.Link as={Link} to="/Chi Siamo">Curiosità</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link as={Link} to="/Catalogo">Catalogo e Offerte Videogiochi</Nav.Link>
+            <Nav.Link as={Link} to="/Catalogo">Catalogo e Offerte </Nav.Link>
             <Nav.Link as={Link} to="/Contattaci">Contattaci</Nav.Link>
             {username ? (
               <>

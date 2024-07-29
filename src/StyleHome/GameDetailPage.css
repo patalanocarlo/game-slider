@@ -1,0 +1,73 @@
+.game-detail-page-container {
+  background-color: #222;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.game-detail-image {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.game-detail-title {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.game-detail-text {
+  color: #fff;
+}
+
+.game-detail-price {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.game-detail-add-to-cart-btn,
+.game-detail-added-to-cart-btn {
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.game-detail-added-to-cart-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.game-detail-add-to-cart-btn:hover,
+.game-detail-added-to-cart-btn:hover {
+  background-color: #28a745;
+}
+
+.game-detail-info-title {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.game-detail-info-list {
+  color: #fff;
+  list-style: none;
+  padding-left: 0;
+}
+
+.game-detail-info-list li {
+  margin-bottom: 10px;
+}
+
+.btn-secondary {
+  color: white;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
