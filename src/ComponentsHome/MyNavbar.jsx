@@ -61,7 +61,7 @@ const CustomNavbar = () => {
         <Navbar.Collapse id="responsive-navbar-nav" className={showCollapse ? 'show' : ''}>
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/Chi Siamo">Curiosità</Nav.Link>
+            <Nav.Link as={Link} to="/Chi-Siamo">Curiosità</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link as={Link} to="/Catalogo">Catalogo e Offerte</Nav.Link>
@@ -71,7 +71,7 @@ const CustomNavbar = () => {
                 <Nav.Link className="welcome-message">Benvenuto, {username}</Nav.Link>
                 <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                 <Nav.Link as={Link} to="/profile"> 
-                  <FontAwesomeIcon icon={faUser} />
+                  <FontAwesomeIcon icon={faUser} className="navbar-icon" />
                 </Nav.Link>
               </>
             ) : (
@@ -81,9 +81,10 @@ const CustomNavbar = () => {
               </>
             )}
             <Nav.Link as={Link} to="/cart">
-              <FontAwesomeIcon icon={faShoppingCart} />
+              <FontAwesomeIcon icon={faShoppingCart} className="navbar-icon" />
               <span className="cart-count">{cart.length}</span>
             </Nav.Link>
+            
           </Nav>
         </Navbar.Collapse>
       </Navbar>
