@@ -16,7 +16,7 @@ import Presetazione from './Gestione Pagine/Presentazione';
 import GameDetailsPage from './ComponentsHome/GameDetailPage';
 import Login from './Login e Registrazione/Login';
 import Register from './Login e Registrazione/Registrazione';
-
+import Profile from './ComponentsHome/Profile';
 import TerminiDuso from './FooterInfo/TerminiDuso';
 import InformativaPrivacy from './FooterInfo/Privacy';
 import PoliticaCookie from './FooterInfo/PoliticaCookie';
@@ -45,6 +45,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/Contattaci" element={<ContactUs />} />
             <Route path="/termini-duso" element={<TerminiDuso />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/informativa-privacy" element={<InformativaPrivacy />} />
             <Route path="/politica-cookie" element={<PoliticaCookie />} />
           </Route>

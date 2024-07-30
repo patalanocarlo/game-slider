@@ -107,21 +107,22 @@ const CheckoutForm = () => {
       </form>
 
       <Modal show={showModal} onHide={handleCloseModal} centered className="custom-modal">
-        <Modal.Header closeButton>
-          <h3 className="text-center">Congratulazioni!</h3>
-        </Modal.Header>
-        <Modal.Body className="text-center">
-          <p>Grazie per aver acquistato da noi.</p>
-        </Modal.Body>
-        <Modal.Footer className="justify-content-center">
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Ok
-          </Button>
-          <Button variant="primary" onClick={handleGoToHomepage}>
-            Torna alla Homepage
-          </Button>
-        </Modal.Footer>
-      </Modal>
+  <Modal.Header closeButton className="modal-header-centered">
+    <h3 className="modal-title">Congratulazioni!</h3>
+  </Modal.Header>
+  <Modal.Body className="text-center">
+    <p>Grazie per aver acquistato da noi.</p>
+  </Modal.Body>
+  <Modal.Footer className="justify-content-center">
+    <Button variant="success" onClick={handleCloseModal}>
+      Ok
+    </Button>
+    <Button variant="primary" onClick={handleGoToHomepage}>
+      Torna alla Homepage
+    </Button>
+  </Modal.Footer>
+</Modal>
+
     </>
   );
 };
