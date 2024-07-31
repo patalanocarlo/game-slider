@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../StyleHome/ContactUs.css';
-import { useNavigate } from 'react-router-dom'; 
+import {Link, useNavigate } from 'react-router-dom'; 
 import backgroundImage from '../Images/10161184.jpg'
+
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     subject: '',
@@ -116,6 +117,11 @@ const ContactUs = () => {
             ></textarea>
           </div>
           <button type="submit" className="btn btn-primary">Invia</button>
+  
+          <Link to="/" className="btn btn-success btn2">
+      Torna alla Home
+    </Link>
+       
         </form>
         {feedbackMessage && <p className="feedback-message">{feedbackMessage}</p>}
       </div>
