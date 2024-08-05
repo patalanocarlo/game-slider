@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Button, Image } from 'react-bootstrap';
+import { Button, Image, Modal, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Chart from 'chart.js/auto';
 import '../StyleHome/Profile.css';
@@ -10,6 +10,8 @@ const Profile = () => {
   const [purchases, setPurchases] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editableField, setEditableField] = useState(null); // Campo attualmente modificabile
+  const [showDeleteModal, setShowDeleteModal] = useState(false); // Stato del modale di cancellazione
+  const [password, setPassword] = useState(''); // Stato per la password di conferma
   const chartRef = useRef(null);
   const navigate = useNavigate();
 
@@ -114,15 +116,17 @@ const Profile = () => {
       console.error('Save profile data failed:', error);
     }
   };
-
+  
   const handleDelete = async () => {
     const token = localStorage.getItem('authToken');
     try {
       const response = await fetch('http://localhost:3001/user/profile', {
         method: 'DELETE',
         headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({ password }),
       });
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -258,16 +262,40 @@ const Profile = () => {
         {isEditing ? (
           <>
             <Button variant="primary" onClick={handleSave}>Salva</Button>
-            <Button variant="danger" onClick={handleDelete} disabled>Elimina</Button>
+            <Button variant="danger" onClick={() => setShowDeleteModal(true)}>Elimina</Button>
           </>
         ) : (
           <>
             <Button variant="primary" onClick={() => setIsEditing(true)}>Modifica</Button>
-            <Button variant="danger" onClick={handleDelete}>Cancella</Button>
+            <Button variant="danger" onClick={() => setShowDeleteModal(true)}>Cancella</Button>
           </>
         )}
         <Button variant="success" onClick={() => navigate('/')}>Ok</Button>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Conferma Cancellazione</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formPassword">
+              <Form.Label>Per favore, conferma la tua password per procedere:</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>Chiudi</Button>
+          <Button variant="danger" onClick={handleDelete}>Conferma Eliminazione</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

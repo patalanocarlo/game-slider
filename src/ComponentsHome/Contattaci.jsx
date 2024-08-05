@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,useRef, useEffect } from 'react';
 import '../StyleHome/ContactUs.css';
 import {Link, useNavigate } from 'react-router-dom'; 
 import backgroundImage from '../Images/10161184.jpg'
 
+
+
+
+
+
+
 const ContactUs = () => {
+  const bannerRef = useRef(null);
+  const scrollStarted = useRef(false);
   const [formData, setFormData] = useState({
     subject: '',
     message: ''
@@ -14,9 +22,43 @@ const ContactUs = () => {
 
   const navigate = useNavigate();
 
+
   useEffect(() => {
     checkLogin();
+    const handleScroll = () => {
+      const banner = bannerRef.current;
+      if (scrollStarted.current) {
+        banner.style.backgroundPositionY = `${(window.scrollY - banner.offsetTop) * 0}px`;
+      } else {
+        banner.style.backgroundPositionY = 'center';
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          scrollStarted.current = true;
+        } else {
+          scrollStarted.current = false;
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (bannerRef.current) {
+      observer.observe(bannerRef.current);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (bannerRef.current) {
+        observer.unobserve(bannerRef.current);
+      }
+    };
   }, []);
+
 
   const checkLogin = () => {
     const token = localStorage.getItem('authToken');
@@ -125,7 +167,9 @@ const ContactUs = () => {
         </form>
         {feedbackMessage && <p className="feedback-message">{feedbackMessage}</p>}
       </div>
+      
     </div>
+
   );
 };
 

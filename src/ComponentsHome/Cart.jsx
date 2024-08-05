@@ -8,6 +8,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
 
+// Load Stripe with the provided test key
 const stripePromise = loadStripe('pk_test_51PgiuoRoqJCjOJgQOgcXBwJSUQuqkluMbchOS3bM2PAA9JsbycUco5Y9kOoHjYravhi37L25wKhACAp1JDT0vn1700owDLitg8');
 
 const CheckoutForm = () => {
@@ -17,9 +18,11 @@ const CheckoutForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false); // State for login modal
   const navigate = useNavigate();
 
   const getTotalPrice = () => {
+    // Calculate the total price of the items in the cart
     return cart.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2);
   };
 
@@ -30,8 +33,8 @@ const CheckoutForm = () => {
 
     const token = localStorage.getItem('authToken');
     if (!token) {
-      alert('Devi essere loggato per completare l\'acquisto.');
-      navigate('/login');
+      // Show the login modal if the user is not logged in
+      setShowLoginModal(true);
       setLoading(false);
       return;
     }
@@ -47,6 +50,7 @@ const CheckoutForm = () => {
       let amount = getTotalPrice() * 100;
 
       if (amount < 50) {
+        // Ensure minimum amount is 50
         amount = 50;
       }
 
@@ -79,7 +83,7 @@ const CheckoutForm = () => {
       } else if (paymentIntent && paymentIntent.status === 'succeeded') {
         console.log('[PaymentIntent]', paymentIntent);
         clearCart();
-        setShowModal(true);
+        setShowModal(true); // Show success modal
       }
     } catch (error) {
       console.error('Errore:', error);
@@ -89,11 +93,16 @@ const CheckoutForm = () => {
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    setShowModal(false); // Close the success modal
+  };
+
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false); // Close the login modal
+    navigate('/login'); // Navigate to the login page after closing the modal
   };
 
   const handleGoToHomepage = () => {
-    navigate('/');
+    navigate('/'); // Navigate to the homepage
   };
 
   return (
@@ -107,22 +116,36 @@ const CheckoutForm = () => {
       </form>
 
       <Modal show={showModal} onHide={handleCloseModal} centered className="custom-modal">
-  <Modal.Header closeButton className="modal-header-centered">
-    <h3 className="modal-title">Congratulazioni!</h3>
-  </Modal.Header>
-  <Modal.Body className="text-center">
-    <p>Grazie per aver acquistato da noi.</p>
-  </Modal.Body>
-  <Modal.Footer className="justify-content-center">
-    <Button variant="success" onClick={handleCloseModal}>
-      Ok
-    </Button>
-    <Button variant="primary" onClick={handleGoToHomepage}>
-      Torna alla Homepage
-    </Button>
-  </Modal.Footer>
-</Modal>
+        <Modal.Header closeButton className="modal-header-centered">
+          <h3 className="modal-title">Congratulazioni!</h3>
+        </Modal.Header>
+        <Modal.Body className="text-center">
+          <p>Grazie per aver acquistato da noi.</p>
+        </Modal.Body>
+        <Modal.Footer className="justify-content-center">
+          <Button variant="success" onClick={handleCloseModal}>
+            Ok
+          </Button>
+          <Button variant="primary" onClick={handleGoToHomepage}>
+            Torna alla Homepage
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
+      {/* Login Modal */}
+      <Modal show={showLoginModal} onHide={handleCloseLoginModal} centered>
+        <Modal.Header closeButton>
+          <h5>Attenzione</h5>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Devi essere loggato per completare l'acquisto.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleCloseLoginModal}>
+            Vai al Login
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

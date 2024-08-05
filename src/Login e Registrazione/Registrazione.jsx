@@ -124,7 +124,7 @@ const Register = () => {
           <div className="text-center">
             <p className="h4">Registrazione completata con successo!</p>
             <h4 className="mb-4">Benvenuto nella nostra famiglia!</h4>
-            <Image src={seaOfThievesImage} alt="Benvenuto" fluid className="mb-4"/>
+            <Image src={seaOfThievesImage} alt="Benvenuto" fluid className="mb-4 radius"/>
             <Link to="/login" className="btn btn-primary mt-3">Vai al Login</Link>
           </div>
         )}

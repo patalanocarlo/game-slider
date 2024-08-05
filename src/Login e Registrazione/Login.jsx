@@ -44,7 +44,7 @@ const Login = () => {
   return (
     <div className="login-background" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="login-form-container">
-        <h2 className="text-center">Accedi</h2>
+        <h2 className="text-center">Login</h2>
         {!success ? (
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicUsername">
@@ -66,7 +66,7 @@ const Login = () => {
               />
             </Form.Group>
             <Button variant="primary" type="submit" className="login-button">
-              Next
+            Accedi
             </Button>
             {error && <p className="text-danger ">{error}</p>}
           </Form>

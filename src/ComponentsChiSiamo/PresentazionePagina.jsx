@@ -1,7 +1,7 @@
 // ChiSiamo.js
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../StyleChiSiamo/PresentazionePagina.css'; // Import the CSS file
+import '../StyleChiSiamo/PresentazionePagina.css'; 
 import newImage from '../Images/CloudImage.png';
 import newImage2 from '../Images/Platform cloud.png';
 import newImage3 from '../Images/gameControl1.png';

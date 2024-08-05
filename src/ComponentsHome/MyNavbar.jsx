@@ -61,7 +61,7 @@ const CustomNavbar = () => {
         <Navbar.Collapse id="responsive-navbar-nav" className={showCollapse ? 'show' : ''}>
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/Chi-Siamo">Curiosità</Nav.Link>
+            <Nav.Link as={Link} to="/Chi Siamo">Curiosità</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link as={Link} to="/Catalogo">Catalogo e Offerte</Nav.Link>
