@@ -3,15 +3,15 @@ import { Button, Image, Modal, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Chart from 'chart.js/auto';
 import '../StyleHome/Profile.css';
-import ImageProfile from '../Images/8088488.jpg'; // Importa l'immagine locale
+import ImageProfile from '../Images/8088488.jpg';
 
 const Profile = () => {
   const [userData, setUserData] = useState({});
   const [purchases, setPurchases] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
-  const [editableField, setEditableField] = useState(null); // Campo attualmente modificabile
-  const [showDeleteModal, setShowDeleteModal] = useState(false); // Stato del modale di cancellazione
-  const [password, setPassword] = useState(''); // Stato per la password di conferma
+  const [editableField, setEditableField] = useState(null); 
+  const [showDeleteModal, setShowDeleteModal] = useState(false); 
+  const [password, setPassword] = useState('');
   const chartRef = useRef(null);
   const navigate = useNavigate();
 
