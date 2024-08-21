@@ -273,7 +273,6 @@ const Profile = () => {
         <Button variant="success" onClick={() => navigate('/')}>Ok</Button>
       </div>
 
-      {/* Delete Confirmation Modal */}
       <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Conferma Cancellazione</Modal.Title>

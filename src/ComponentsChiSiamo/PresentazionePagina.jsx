@@ -14,19 +14,19 @@ const ChiSiamo = () => {
         <div className="text-center">
           <h1 className="mb-4">Chi siamo</h1>
           <p>
-            Siamo un'azienda leader del settore e-commerce per la vendita e l'uso del cloud dei videogiochi. Offriamo 
-            una piattaforma avanzata che consente agli utenti di acquistare, scaricare e giocare ai loro giochi preferiti 
-            direttamente dal cloud, eliminando la necessità di hardware costoso e ingombrante.
+            Siamo un'azienda leader nel settore e-commerce, specializzata nella vendita di videogiochi per tutte le piattaforme. 
+            Offriamo una vasta gamma di titoli, dai classici ai più recenti, per soddisfare le esigenze di ogni tipo di giocatore.
           </p>
           <p>
-            La nostra piattaforma è progettata per offrire prestazioni superiori e un'esperienza di gioco ottimale, 
-            utilizzando le più recenti tecnologie cloud. Forniamo opzioni personalizzabili per soddisfare le esigenze 
-            di ogni giocatore, garantendo accesso immediato ai giochi con qualità HD e senza tempi di attesa.
+            La nostra piattaforma è progettata per rendere l'acquisto di videogiochi semplice e veloce, con offerte esclusive 
+            e promozioni speciali per i nostri clienti. Garantiamo un servizio di alta qualità, con supporto continuo e 
+            consegne rapide per tutti i nostri prodotti.
           </p>
           <p>
-            Grazie alla nostra vasta gamma di offerte, premi e token, i giocatori possono beneficiare di vantaggi esclusivi 
-            e di un'esperienza di gioco coinvolgente e gratificante. La nostra missione è rivoluzionare il modo in cui 
-            i giochi vengono acquistati e giocati, portando l'innovazione del cloud gaming a un nuovo livello.
+            Inoltre, siamo all'avanguardia nel cloud gaming, offrendo ai nostri clienti la possibilità di giocare ai loro 
+            titoli preferiti direttamente dal cloud, senza bisogno di hardware costoso. La nostra missione è offrire 
+            un'esperienza di gioco completa, sia per chi preferisce acquistare e giocare in locale, sia per chi sceglie 
+            il cloud gaming.
           </p>
         </div>
         
@@ -34,30 +34,28 @@ const ChiSiamo = () => {
           <div className="row my-5">
             <div className="col-md-6 d-flex align-items-center">
               <div>
-                <h3>Gioca in locale o sul cloud</h3>
+                <h3>Acquista e gioca in locale o sul cloud</h3>
                 <p>
-                  La nostra piattaforma è progettata per offrire prestazioni superiori e un'esperienza di gioco ottimale, 
-                  utilizzando le più recenti tecnologie cloud. Forniamo opzioni personalizzabili per soddisfare le esigenze 
-                  di ogni giocatore, garantendo accesso immediato ai giochi con qualità HD e senza tempi di attesa.
+                  Offriamo una vasta libreria di videogiochi per l'acquisto immediato, con la possibilità di giocare 
+                  in locale o direttamente dal cloud. Scegli il metodo che preferisci e inizia subito a giocare!
                 </p>
               </div>
             </div>
             <div className="col-md-6">
-              <img src={newImage} alt="Gioca in locale o sul cloud" className="img-fluid"/>
+              <img src={newImage} alt="Acquista e gioca in locale o sul cloud" className="img-fluid"/>
             </div>
           </div>
 
           <div className="row my-5">
             <div className="col-md-6">
-              <img src={newImage2} alt="La piattaforma di gioco più leggera e veloce" className="img-fluid"/>
+              <img src={newImage2} alt="La piattaforma di acquisto più leggera e veloce" className="img-fluid"/>
             </div>
             <div className="col-md-6 d-flex align-items-center">
               <div>
-                <h3>La piattaforma di gioco più leggera e veloce</h3>
+                <h3>La piattaforma di acquisto più leggera e veloce</h3>
                 <p>
-                  con tempi di configurazione fino al 50% più rapidi e consuma fino al 50% in meno di utilizzo della RAM 
-                  rispetto ad altre piattaforme. Offre una vasta libreria di giochi di oltre 2 milioni di giochi ed è 
-                  considerato affidabile da oltre 500 milioni di giocatori in tutto il mondo.
+                  La nostra piattaforma è ottimizzata per una navigazione rapida e un acquisto facile, con una vasta gamma 
+                  di giochi tra cui scegliere. Inoltre, supportiamo il cloud gaming per chi desidera una soluzione più leggera e flessibile.
                 </p>
               </div>
             </div>
@@ -66,28 +64,28 @@ const ChiSiamo = () => {
           <div className="row my-5">
             <div className="col-md-6 d-flex align-items-center">
               <div>
-                <h3>Gameplay simile a un PC con le stesse qualità tecniche</h3>
+                <h3>Esperienza di gioco su misura</h3>
                 <p>
-                  Tutti i nostri giocatori possono usufruire di un servizio cloud che mette in prima linea la qualità 
-                  tecnica dei nostri prodotti!
+                  Offriamo un'esperienza di gioco personalizzabile, sia che tu scelga di giocare su PC, console o tramite 
+                  il cloud. La qualità tecnica dei nostri prodotti garantisce un'esperienza di gioco eccezionale.
                 </p>
               </div>
             </div>
             <div className="col-md-6">
-              <img src={newImage3} alt="Gioca in locale o sul cloud" className="img-fluid"/>
+              <img src={newImage3} alt="Esperienza di gioco su misura" className="img-fluid"/>
             </div>
           </div>
 
           <div className="row my-5">
             <div className="col-md-6">
-              <img src={newImage4} alt="La piattaforma di gioco più leggera e veloce" className="img-fluid"/>
+              <img src={newImage4} alt="Il mostro delle prestazioni" className="img-fluid"/>
             </div>
             <div className="col-md-6 d-flex align-items-center">
               <div>
                 <h3>Il mostro delle prestazioni</h3>
                 <p>
-                  Inoltre è possibile raggiungere fino a 240 fotogrammi al secondo (FPS). Con FPS elevati, i giocatori 
-                  sbloccano un gameplay a bassa latenza e transizioni di gioco più fluide per la migliore esperienza di gioco.
+                  Raggiungi prestazioni incredibili con giochi a 240 FPS per un'esperienza fluida e a bassa latenza, 
+                  sia che giochi in locale o nel cloud. Il nostro servizio garantisce sempre il meglio per i nostri giocatori.
                 </p>
               </div>
             </div>

@@ -68,7 +68,7 @@ const CustomNavbar = () => {
             <Nav.Link as={Link} to="/Contattaci">Contattaci</Nav.Link>
             {username ? (
               <>
-                <Nav.Link className="welcome-message">Benvenuto, {username}</Nav.Link>
+                <Nav.Link className="welcome-message">Benvenuto/a, {username}</Nav.Link>
                 <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                 <Nav.Link as={Link} to="/profile"> 
                   <FontAwesomeIcon icon={faUser} className="navbar-icon" />

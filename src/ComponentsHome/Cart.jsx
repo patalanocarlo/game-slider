@@ -18,11 +18,11 @@ const CheckoutForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false); // State for login modal
+  const [showLoginModal, setShowLoginModal] = useState(false); 
   const navigate = useNavigate();
 
   const getTotalPrice = () => {
-    // Calculate the total price of the items in the cart
+ 
     return cart.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2);
   };
 
@@ -33,7 +33,7 @@ const CheckoutForm = () => {
 
     const token = localStorage.getItem('authToken');
     if (!token) {
-      // Show the login modal if the user is not logged in
+      
       setShowLoginModal(true);
       setLoading(false);
       return;
@@ -50,7 +50,7 @@ const CheckoutForm = () => {
       let amount = getTotalPrice() * 100;
 
       if (amount < 50) {
-        // Ensure minimum amount is 50
+        
         amount = 50;
       }
 
@@ -83,7 +83,7 @@ const CheckoutForm = () => {
       } else if (paymentIntent && paymentIntent.status === 'succeeded') {
         console.log('[PaymentIntent]', paymentIntent);
         clearCart();
-        setShowModal(true); // Show success modal
+        setShowModal(true); 
       }
     } catch (error) {
       console.error('Errore:', error);
@@ -93,16 +93,16 @@ const CheckoutForm = () => {
   };
 
   const handleCloseModal = () => {
-    setShowModal(false); // Close the success modal
+    setShowModal(false); 
   };
 
   const handleCloseLoginModal = () => {
-    setShowLoginModal(false); // Close the login modal
-    navigate('/login'); // Navigate to the login page after closing the modal
+    setShowLoginModal(false); 
+    navigate('/login'); 
   };
 
   const handleGoToHomepage = () => {
-    navigate('/'); // Navigate to the homepage
+    navigate('/'); 
   };
 
   return (
