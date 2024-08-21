@@ -14,9 +14,3 @@
   height: 100vh;
   overflow-y: auto;
 }
-h1 {
-  background: linear-gradient(-45deg, #00f, #fff, #ff0);
-  -webkit-background-clip: text;
-  color: var(--bgcolor);
-  -webkit-text-stroke: 3px transparent;
-}
