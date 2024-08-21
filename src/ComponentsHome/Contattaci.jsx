@@ -124,7 +124,7 @@ const ContactUs = () => {
     return (
       <div className="contact-us" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="contact-us-container">
-          <h3>Ci Dispiace!</h3>
+          <h3 className='contact-us-head'>Ci Dispiace!</h3>
           <p>Per inviare un'email, devi essere loggato.</p>
           <button onClick={handleLoginRedirect} className="btn btn-secondary">Vai al login</button>
         </div>

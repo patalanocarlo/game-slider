@@ -75,7 +75,9 @@
   background-color: #007bff;
   border-color: #007bff;
 }
-
+.advisor-header {
+  color: black;
+}
 .custom-modal .btn-primary:hover {
   background-color: #0056b3;
   border-color: #004085;
@@ -92,4 +94,23 @@
   margin: 0;
   text-align: center;
   width: 100%;
+}
+.modal-header-centered {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.modal-title-centered {
+  text-align: center;
+  width: 100%;
+}
+
+.modal-body-centered {
+  text-align: center;
+}
+
+.modal-footer-centered {
+  display: flex;
+  justify-content: center;
 }

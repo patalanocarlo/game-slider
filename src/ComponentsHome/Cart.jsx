@@ -132,20 +132,20 @@ const CheckoutForm = () => {
         </Modal.Footer>
       </Modal>
 
-      {/* Login Modal */}
+     
       <Modal show={showLoginModal} onHide={handleCloseLoginModal} centered>
-        <Modal.Header closeButton>
-          <h5>Attenzione</h5>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Devi essere loggato per completare l'acquisto.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleCloseLoginModal}>
-            Vai al Login
-          </Button>
-        </Modal.Footer>
-      </Modal>
+  <Modal.Header closeButton className="modal-header-centered">
+    <h5 className="modal-title-centered advisor-header">Attenzione</h5>
+  </Modal.Header>
+  <Modal.Body className="modal-body-centered">
+    <p>Devi essere loggato per completare l'acquisto.</p>
+  </Modal.Body>
+  <Modal.Footer className="modal-footer-centered">
+    <Button variant="primary" onClick={handleCloseLoginModal}>
+      Vai al Login
+    </Button>
+  </Modal.Footer>
+</Modal>
     </>
   );
 };
